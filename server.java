@@ -8,39 +8,68 @@ import java.lang.instrument.Instrumentation;
 public class server {
 	private static Instrumentation instrumentation;
 	
-	final static int PACKET_SIZE=512;//packet size is 512 becuase each char is made of 2 bytes
-	final static int FILESIZE=2;
+	public final static int PACKET_SIZE=3;//packet size is 512 becuase each char is made of 2 bytes
+	public final static int FILESIZE=2;
+	public final static int PORT_NUMBER=6789;
 	
 	public static void main(String args[]) throws Exception
 	{
 		//Reading the file and puttin it in buffer
-		String fwrite="C:\\Users\\S.S. Mehta\\Desktop\\Codes\\ComputerNetworks\\CN_project\\CN_project\\test3.txt";
+		String filename="C:\\Users\\S.S. Mehta\\Desktop\\Codes\\ComputerNetworks\\CN_project\\CN_project\\test3.txt";
+		makeTextFile(filename);
+
+		BufferedReader in =new BufferedReader(new FileReader(filename));
+		
+		char [] c1=new char[PACKET_SIZE];
+		c1=readData(in);
+		
+		//Step3 - making a socket , makeing a packet with inet address and sending it
+			byte [] buffer =new byte[PACKET_SIZE];
+			DatagramSocket skt=new DatagramSocket(PORT_NUMBER);
+			DatagramPacket request=new DatagramPacket(buffer,buffer.length);
+			
+			//stop till you receive 
+				wait(skt,request);
+				System.out.println("On server side \nrequest received from Slient");
+			//making a packet with an inet address - 
+				InetAddress host = InetAddress.getByName("localhost");
+				DatagramPacket reply=makePacket(c1,host);
+				System.out.println("Sending reply packet to client");
+				Thread.sleep(5000);
+				skt.send(reply);
+			
+		//closing the socket
+		skt.close();
+	}
+	
+	public static DatagramPacket makePacket(char c1[],InetAddress inetAddress)
+	{
+		byte[] sendMsg=(c1).toString().getBytes();
+		DatagramPacket packet=new DatagramPacket(sendMsg,sendMsg.length,inetAddress,server.PORT_NUMBER);
+		return packet;
+	}
+	
+	public static void wait(DatagramSocket skt,DatagramPacket request) throws IOException, InterruptedException
+	{
+		//stop till you receive 
+				skt.receive(request);
+				System.out.println("request received");
+				Thread.sleep(2000);
+				
+	}
+	
+	public static void makeTextFile(String fwrite) throws IOException
+	{
 		BufferedWriter writer=new BufferedWriter(new FileWriter(fwrite));
 		int i,j;
 		for(i=65;i<65+FILESIZE;i++)
 		{
-			for(i=0;i<PACKET_SIZE;i++)
+			for(j=0;j<PACKET_SIZE;j++)
 			{
 				writer.write((char)i);
 			}
 		}
 		writer.close();
-		
-		String filename="C:\\Users\\S.S. Mehta\\Desktop\\Codes\\ComputerNetworks\\CN_project\\CN_project\\test2.txt";
-		BufferedReader in =new BufferedReader(new FileReader(filename));
-		//in.wait();
-		
-		//defining a char array that will store the packet data
-		char [] c1=new char[PACKET_SIZE];
-		c1=packetRead(in);
-		displayPacket(c1);
-		char c2[]=new char[]{'a','b','c'};
-		displayPacket(c2);
-		
-		//run a loop which checks whether the input isempty or not
-		// read 1st 512 chars
-		
-		
 	}
 	
 	public static void displayPacket(char c1[])
@@ -50,25 +79,26 @@ public class server {
 		{
 			System.out.print(c1[i]);
 		}
+		System.out.println();
+		
 	}
 	
-	public static char[] packetRead(BufferedReader in) throws IOException
+	public static char[] readData(BufferedReader in) throws IOException
 	{
 		char [] c1=new char[PACKET_SIZE];
 		int i;
 		int c_temp=in.read();//c_temp is an int and not a char;
-		while(c_temp!=-1)
+		if(c_temp!=-1)
 		{
 			c1[0]=(char)c_temp;
-			for(i=1;i<PACKET_SIZE&&c_temp!=-1;i++)
-			{
-				c_temp=in.read();
-				c1[i]=(char)c_temp;
-			}
+		}
 			
+		for(i=1;i<PACKET_SIZE&&c_temp!=-1;i++)
+		{
+			c_temp=in.read();
+			c1[i]=(char)c_temp;
 		}
 		return c1;
-		
 	}
 	
 	
@@ -139,6 +169,7 @@ public class server {
 				skt.close();
 	}
 	}
+	
 	public static void trash1()
 	{
 
@@ -158,6 +189,13 @@ public class server {
 	{
 		
 	}
+	
+	char c2[]=new char[]{'a','b','c'};
+		displayPacket(c2);
+		
+		//run a loop which checks whether the input isempty or not
+		// read 1st 512 chars
+		
 	*/		
 		/*
 		String s1;
