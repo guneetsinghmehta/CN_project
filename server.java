@@ -14,14 +14,15 @@ public class server {
 	
 	public static void main(String args[]) throws Exception
 	{
-		//Reading the file and puttin it in buffer
-		String filename="C:\\Users\\S.S. Mehta\\Desktop\\Codes\\ComputerNetworks\\CN_project\\CN_project\\test3.txt";
-		makeTextFile(filename);
+		//Making a text file
+			String filename="C:\\Users\\S.S. Mehta\\Desktop\\Codes\\ComputerNetworks\\CN_project\\CN_project\\test3.txt";
+			makeTextFile(filename);
 
-		BufferedReader in =new BufferedReader(new FileReader(filename));
-		
-		char [] c1=new char[PACKET_SIZE];
-		c1=readData(in);
+		//Reading the file and puttin it in buffer
+			BufferedReader in =new BufferedReader(new FileReader(filename));
+			char [] c1=new char[PACKET_SIZE];
+			c1=readData(in);
+			displayPacket(c1);
 		
 		//Step3 - making a socket , makeing a packet with inet address and sending it
 			byte [] buffer =new byte[PACKET_SIZE];
@@ -33,7 +34,10 @@ public class server {
 				System.out.println("On server side \nrequest received from Slient");
 			//making a packet with an inet address - 
 				InetAddress host = InetAddress.getByName("localhost");
+				
 				DatagramPacket reply=makePacket(c1,host);
+				 
+			//Sending reply packet
 				System.out.println("Sending reply packet to client");
 				Thread.sleep(5000);
 				skt.send(reply);
@@ -44,8 +48,12 @@ public class server {
 	
 	public static DatagramPacket makePacket(char c1[],InetAddress inetAddress)
 	{
-		byte[] sendMsg=(c1).toString().getBytes();
-		DatagramPacket packet=new DatagramPacket(sendMsg,sendMsg.length,inetAddress,server.PORT_NUMBER);
+		//byte[] sendMsg=(c1).toString().getBytes();
+		String s1=new String(c1);
+		System.out.println(c1);
+		byte[] sendMsg=s1.getBytes();
+		DatagramPacket packet=new DatagramPacket(sendMsg,sendMsg.length,inetAddress,client.PORT_NUMBER_CLIENT);
+		System.out.println(new String(packet.getData()));
 		return packet;
 	}
 	
