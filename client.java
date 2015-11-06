@@ -8,22 +8,15 @@ public class client {
 	public final static int PORT_NUMBER_CLIENT=6790;
 	public static void main(String args[])
 	{
-		int i,j;//declaring random variables
-		
-		//declaring socket
-			DatagramSocket skt;
-
+		int i,j;
+		DatagramSocket skt;
 		try{
 			skt=new DatagramSocket(PORT_NUMBER_CLIENT);//socket used to listen and write
 			String msg="Guneet";
 			byte[] b=msg.getBytes();
 			
-			//getting localhost's name
-				//InetAddress host = InetAddress.getByName("10.10.3.2");
-				InetAddress host=InetAddress.getByName("localhost");
-			
-				// defining the socket number- completely random
-				int serversocket=server.PORT_NUMBER;
+			InetAddress host=InetAddress.getByName("localhost");
+			int serversocket=server.PORT_NUMBER;	
 			
 			//defining a packet called request with parameters b(msg in bytes), b.length, host Internet address and socket number
 				DatagramPacket request=new DatagramPacket(b,b.length,host,serversocket);
