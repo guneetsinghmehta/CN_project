@@ -47,13 +47,17 @@ public class server3 {
 				Thread.sleep(server3.PAUSE_DURATION);
 				skt.send(reply);
 			
-		int i;		
+		int i,requested_packet;		
 		for(i=0;i<filesize/PACKET_SIZE;i++)
 		{
 			wait(skt,request);
+			requested_packet=Integer.parseInt(new String(request.getData()).trim());
+			System.out.println(requested_packet);
+			Thread.sleep(server3.PAUSE_DURATION);
+			
 			c1=readData(in);
 			reply=makePacket(new String(c1),host);
-			System.out.println("server got request "+i+" ");
+			
 			skt.send(reply);
 		}
 			

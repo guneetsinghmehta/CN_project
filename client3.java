@@ -48,6 +48,10 @@ public class client3 {
 			String [] buffer_string=new String[BUFFER_SIZE_CLIENT];
 				for(i=0;i<filesize/server3.PACKET_SIZE;i++)
 				{
+					msg=String.valueOf(i);
+					b=msg.getBytes();
+					request=new DatagramPacket(b,b.length,host,serversocket);
+					
 					skt.send(request);skt.receive(reply);
 					if(empty_index<BUFFER_SIZE_CLIENT)
 					{

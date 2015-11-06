@@ -52,16 +52,17 @@ public class Q3_server {
 					System.out.println("sending confirmation");
 					
 					//Thread.sleep(5000);//for error check
-					
-					//writing server log file
-						PrintWriter writer=new PrintWriter("server_log.txt","UTF-8");
-						writer.println(client_name);
-						writer.println(movie_name);
-						writer.println(time);
-						writer.close();
 						
 					//sending the data packet
 						skt.send(reply);
+						
+					//writing server log file
+					PrintWriter writer=new PrintWriter("server_log.txt","UTF-8");
+					writer.println(client_name);
+					writer.println(movie_name);
+					writer.println(time);
+					writer.close();
+					
 					//Closing the server socket
 						skt.close();
 			}
