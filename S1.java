@@ -15,9 +15,9 @@ public class S1 {
 	
 	public static void main(String args[]) throws Exception
 	{
-		String clientInetAddress="localhost";
+		String clientInetAddress="10.10.7.1";
 		//Making a text file
-			String filename="C:\\Users\\S.S. Mehta\\Desktop\\Codes\\ComputerNetworks\\CN_project\\CN_project\\test3.txt";
+			String filename="test3.txt";
 			makeTextFile(filename);
 
 		//Reading the file and puttin it in buffer
@@ -44,7 +44,7 @@ public class S1 {
 				 
 			//Sending reply packet
 				System.out.println("Sending reply packet to client");
-				Thread.sleep(server4.PAUSE_DURATION);
+				Thread.sleep(S1.PAUSE_DURATION);
 				skt.send(reply);
 			
 		int i,requested_packet;		
@@ -53,7 +53,7 @@ public class S1 {
 			wait(skt,request);
 			requested_packet=Integer.parseInt(new String(request.getData()).trim());
 			System.out.println(requested_packet);
-			Thread.sleep(server4.PAUSE_DURATION);
+			Thread.sleep(S1.PAUSE_DURATION);
 			
 			c1=readData(in);
 			reply=makePacket(new String(c1),host);
@@ -90,7 +90,7 @@ public class S1 {
 		//stop till you receive 
 				skt.receive(request);
 				//System.out.println("request received");
-				Thread.sleep(server4.PAUSE_DURATION);
+				Thread.sleep(S1.PAUSE_DURATION);
 				
 	}
 	
