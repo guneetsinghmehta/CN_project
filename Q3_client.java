@@ -44,7 +44,8 @@ public class Q3_client {
 				byte[] b=msg.getBytes();
 			
 			//getting localhost's name
-				InetAddress host=InetAddress.getByName("localhost");
+				InetAddress host = InetAddress.getByName("10.10.3.2");
+				//InetAddress host=InetAddress.getByName("localhost");
 			// defining the socket number- completely random
 				int serversocket=6789;
 			
