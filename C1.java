@@ -65,7 +65,7 @@ public class C1{
 			// Find the number of times it must make iterations - dividing filesize by packet_size
 			// Request that many packets from server 		
 			String [] buffer_string=new String[BUFFER_SIZE_CLIENT];
-			long delay[]=new long[filesize/S1.PACKET_SIZE];
+			float delay[]=new float[filesize/S1.PACKET_SIZE];
 				for(i=0;i<filesize/S1.PACKET_SIZE;i++)
 				{
 					if(i%10!=0)
@@ -91,9 +91,10 @@ public class C1{
 					
 					skt.send(request);
 					delay[i]=System.nanoTime();
+					Thread.sleep(10);
 					skt.receive(reply);
 					delay[i]=System.nanoTime()-delay[i];
-					
+					delay[i]=delay[i]/(1000000);
 					if(empty_index<BUFFER_SIZE_CLIENT)
 					{
 						buffer_string[empty_index]=new String(reply.getData());
@@ -108,7 +109,26 @@ public class C1{
 						buffer_string[BUFFER_SIZE_CLIENT-1]=new String(reply.getData());
 					}
 					display_buffer(buffer_string);
-				}	
+				}
+				Arrays.sort(delay);
+				float delay2[]=new float[filesize/S1.PACKET_SIZE];
+				for(i=0;i<delay2.length;i++)
+				{
+					delay2[i]=delay[delay.length-i-1];
+				}
+				//delay2 stores the array in descending values
+				
+				float [] Sk=new float[filesize/S1.PACKET_SIZE];
+				Sk[0]=(float) 0.0;
+				for (i=1;i<filesize/S1.PACKET_SIZE;i++)
+				{
+					for(j=1;j<i;j++)
+					{
+						Sk[i]=Sk[i]+delay2[j];
+					}
+					Sk[i]=Sk[i]/(10*i);
+				}
+				System.out.format("Sk at 2=%f\n,10=%f\n,20=%f\n,100=%f\n and 300=%f\n ",Sk[1],Sk[9],Sk[19],Sk[99],Sk[299]);
 				display_buffer(buffer_string);
 			skt.close();
 		}
