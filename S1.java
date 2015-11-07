@@ -30,17 +30,16 @@ public class S1 {
 			byte [] buffer =new byte[PACKET_SIZE];
 			DatagramSocket skt=new DatagramSocket(PORT_NUMBER_SERVER);
 			DatagramPacket request=new DatagramPacket(buffer,buffer.length);
-			//int filesize= (int) new File(filename).length();
+			
 			FileInputStream f1=new FileInputStream(filename);
-			int filesize= (int) f1.getChannel().size();
+			//int filesize= (int) f1.getChannel().size();
 			f1.close();
-			System.out.println(filesize);
 			//stop till you receive - request for filesize
 				wait(skt,request);
 				//System.out.println("On server side \nrequest received from Client");
 			
 			//making a packet with an inet address - 
-				
+				int filesize= (int) new File(filename).length();
 				String filesizeString=""+filesize;
 				//System.out.println(filesize);
 				InetAddress host = InetAddress.getByName(clientInetAddress);
