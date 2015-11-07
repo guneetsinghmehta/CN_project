@@ -71,9 +71,9 @@ public class C1{
 			Thread.sleep(2000);
 				for(i=0;i<filesize/S1.PACKET_SIZE;i++)
 				{
-					if(i%10!=0)
+					if(i%100!=0)
 					{
-						System.out.print(" "+i);
+						//System.out.print(" "+i);
 					}
 					else
 					{
@@ -131,7 +131,7 @@ public class C1{
 					}
 					Sk[i]=Sk[i]/(10*i);
 				}
-				System.out.format("Sk at 2=%f\n,10=%f\n,20=%f\n,100=%f\n and 300=%f\n ",Sk[1],Sk[9],Sk[19],Sk[99],Sk[299]);
+				System.out.format("Sk at 2=%f\n,10=%f\n,20=%f\n,100=%f\n and 30000=%f\n ",Sk[1],Sk[9],Sk[19],Sk[99],Sk[29999]);
 				display_buffer(buffer_string);
 			skt.close();
 		}
