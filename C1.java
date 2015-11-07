@@ -65,8 +65,17 @@ public class C1{
 			// Find the number of times it must make iterations - dividing filesize by packet_size
 			// Request that many packets from server 		
 			String [] buffer_string=new String[BUFFER_SIZE_CLIENT];
+			long delay[]=new long[filesize/S1.PACKET_SIZE];
 				for(i=0;i<filesize/S1.PACKET_SIZE;i++)
 				{
+					if(i%10!=0)
+					{
+						System.out.print(" "+i);
+					}
+					else
+					{
+						System.out.println(" "+i);
+					}
 					byte [] buffer =new byte[S1.PACKET_SIZE];
 					msg=String.valueOf(i);
 					b=msg.getBytes();
@@ -80,7 +89,11 @@ public class C1{
 						
 					request=new DatagramPacket(b,b.length,host,serversocket);
 					
-					skt.send(request);skt.receive(reply);
+					skt.send(request);
+					delay[i]=System.nanoTime();
+					skt.receive(reply);
+					delay[i]=System.nanoTime()-delay[i];
+					
 					if(empty_index<BUFFER_SIZE_CLIENT)
 					{
 						buffer_string[empty_index]=new String(reply.getData());
