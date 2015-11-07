@@ -8,7 +8,7 @@ import java.lang.instrument.Instrumentation;
 public class S1 {
 	private static Instrumentation instrumentation;
 	
-	public final static int PACKET_SIZE=1;//packet size is 512 becuase each char is made of 2 bytes
+	public final static int PACKET_SIZE=1024;//packet size is 512 becuase each char is made of 2 bytes
 	public final static int FILESIZE=4;
 	public final static int PORT_NUMBER_SERVER=6789;
 	public final static int PAUSE_DURATION=1000;
@@ -50,8 +50,16 @@ public class S1 {
 		int i,requested_packet;		
 		for(i=0;i<filesize/PACKET_SIZE;i++)
 		{
+			requested_packet=0;
 			wait(skt,request);
-			requested_packet=Integer.parseInt(new String(request.getData()).trim());
+			try{
+				requested_packet=Integer.parseInt(new String(request.getData()).trim());
+			}
+			catch(Exception e)
+			{
+				System.out.println(e);
+			}
+			
 			System.out.println(requested_packet);
 			Thread.sleep(S1.PAUSE_DURATION);
 			

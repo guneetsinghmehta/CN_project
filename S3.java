@@ -50,8 +50,15 @@ public class S3 {
 		int i,requested_packet;		
 		for(i=0;i<filesize/PACKET_SIZE;i++)
 		{
+			requested_packet=2;
 			wait(skt,request);
-			requested_packet=Integer.parseInt(new String(request.getData()).trim());
+			try{
+				requested_packet=Integer.parseInt(new String(request.getData()).trim());
+			}
+			catch(Exception e)
+			{
+				System.out.println(e);
+			}
 			System.out.println(requested_packet);
 			Thread.sleep(S1.PAUSE_DURATION);
 			
