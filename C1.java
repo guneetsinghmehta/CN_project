@@ -98,6 +98,7 @@ public class C1{
 					skt.receive(reply);
 					delay[i]=System.nanoTime()-delay[i];
 					delay[i]=delay[i]/(1000000);
+					/*
 					if(empty_index<BUFFER_SIZE_CLIENT)
 					{
 						buffer_string[empty_index]=new String(reply.getData());
@@ -110,7 +111,8 @@ public class C1{
 							buffer_string[j]=buffer_string[j+1];
 						}
 						buffer_string[BUFFER_SIZE_CLIENT-1]=new String(reply.getData());
-					}
+					}*/
+					
 					//display_buffer(buffer_string);
 				}
 				Arrays.sort(delay);
