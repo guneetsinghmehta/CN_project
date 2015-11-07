@@ -5,7 +5,7 @@ import java.util.*;
 import java.text.*;
 
 public class C1{
-	public final static int PORT_NUMBER_CLIENT=6790;
+	public final static int PORT_NUMBER_CLIENT=8001;
 	public final static int BUFFER_SIZE_CLIENT=32*S1.PACKET_SIZE;
 	static int empty_index=0;
 	public static void main(String args[]) throws InterruptedException, IOException
@@ -69,6 +69,7 @@ public class C1{
 			System.out.println(filesize);System.out.println(S1.PACKET_SIZE);
 			System.out.println(filesize/S1.PACKET_SIZE);
 			Thread.sleep(2000);
+			byte [] buffer =new byte[S1.PACKET_SIZE];
 				for(i=0;i<filesize/S1.PACKET_SIZE;i++)
 				{
 					if(i%100!=0)
@@ -79,7 +80,7 @@ public class C1{
 					{
 						System.out.println(" "+i);
 					}
-					byte [] buffer =new byte[S1.PACKET_SIZE];
+					
 					msg=String.valueOf(i);
 					b=msg.getBytes();
 					
