@@ -122,7 +122,7 @@ public class C1{
 				Sk[0]=(float) 0.0;
 				for (i=1;i<filesize/S1.PACKET_SIZE;i++)
 				{
-					for(j=1;j<i;j++)
+					for(j=1;j<=i;j++)
 					{
 						Sk[i]=Sk[i]+delay2[j];
 					}
