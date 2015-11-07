@@ -58,7 +58,7 @@ public class S1 {
 			catch(Exception e)
 			{
 				System.out.println(e);
-				skt.close();
+				//skt.close();
 			}
 			
 			System.out.println(requested_packet);
