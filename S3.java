@@ -10,7 +10,7 @@ public class S3 {
 	
 	public final static int PACKET_SIZE=S1.PACKET_SIZE;//packet size is 512 becuase each char is made of 2 bytes
 	public final static int FILESIZE=S1.FILESIZE;
-	public final static int PORT_NUMBER_SERVER=6789;
+	public final static int PORT_NUMBER_SERVER=S1.PORT_NUMBER_SERVER;
 	public final static int PAUSE_DURATION=1000;
 	
 	public static void main(String args[]) throws Exception
