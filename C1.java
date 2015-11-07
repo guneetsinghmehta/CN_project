@@ -66,6 +66,9 @@ public class C1{
 			// Request that many packets from server 		
 			String [] buffer_string=new String[BUFFER_SIZE_CLIENT];
 			float delay[]=new float[filesize/S1.PACKET_SIZE];
+			System.out.println(filesize);System.out.println(S1.PACKET_SIZE);
+			System.out.println(filesize/S1.PACKET_SIZE);
+			Thread.sleep(2000);
 				for(i=0;i<filesize/S1.PACKET_SIZE;i++)
 				{
 					if(i%10!=0)
