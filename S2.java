@@ -32,7 +32,7 @@ public class S2{
 			DatagramPacket request=new DatagramPacket(buffer,buffer.length);
 			
 			FileInputStream f1=new FileInputStream(filename);
-			float filesize= f1.getChannel().size();
+			int filesize= (int) f1.getChannel().size();
 			f1.close();
 			//stop till you receive - request for filesize
 				wait(skt,request);
