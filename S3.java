@@ -33,17 +33,17 @@ public class S3 {
 			
 			//stop till you receive - request for filesize
 				wait(skt,request);
-				System.out.println("On server side \nrequest received from Client");
+				//System.out.println("On server side \nrequest received from Client");
 			
 			//making a packet with an inet address - 
 				int filesize= (int) new File(filename).length();
 				String filesizeString=""+filesize;
-				System.out.println(filesize);
+				//System.out.println(filesize);
 				InetAddress host = InetAddress.getByName(clientInetAddress);
 				DatagramPacket reply=makePacket(filesizeString,host);
 				 
 			//Sending reply packet
-				System.out.println("Sending reply packet to client");
+				//System.out.println("Sending reply packet to client");
 				Thread.sleep(S1.PAUSE_DURATION);
 				skt.send(reply);
 			
@@ -57,10 +57,10 @@ public class S3 {
 			}
 			catch(Exception e)
 			{
-				//System.out.println(e);
+				////System.out.println(e);
 				//skt.close();
 			}
-			System.out.println(requested_packet);
+			//System.out.println(requested_packet);
 			Thread.sleep(S1.PAUSE_DURATION);
 			
 			c1=readData(in);
@@ -79,7 +79,7 @@ public class S3 {
 	{
 		byte[] sendMsg=s1.getBytes();
 		DatagramPacket packet=new DatagramPacket(sendMsg,sendMsg.length,inetAddress,client3.PORT_NUMBER_CLIENT);
-		System.out.println(new String(packet.getData()));
+		//System.out.println(new String(packet.getData()));
 		return packet;
 	}
 	
@@ -87,10 +87,10 @@ public class S3 {
 	{
 		//byte[] sendMsg=(c1).toString().getBytes();
 		String s1=new String(c1);
-		System.out.println(c1);
+		//System.out.println(c1);
 		byte[] sendMsg=s1.getBytes();
 		DatagramPacket packet=new DatagramPacket(sendMsg,sendMsg.length,inetAddress,client.PORT_NUMBER_CLIENT);
-		System.out.println(new String(packet.getData()));
+		//System.out.println(new String(packet.getData()));
 		return packet;
 	}
 	
@@ -98,7 +98,7 @@ public class S3 {
 	{
 		//stop till you receive 
 				skt.receive(request);
-				//System.out.println("request received");
+				////System.out.println("request received");
 				Thread.sleep(S1.PAUSE_DURATION);
 				
 	}
@@ -107,7 +107,8 @@ public class S3 {
 	{
 		BufferedWriter writer=new BufferedWriter(new FileWriter(fwrite));
 		int i,j;
-		for(i=65;i<65+FILESIZE;i++)
+		i=65;
+		for(i=0;i<FILESIZE;i++)
 		{
 			for(j=0;j<PACKET_SIZE;j++)
 			{
@@ -124,7 +125,7 @@ public class S3 {
 		{
 			System.out.print(c1[i]);
 		}
-		System.out.println();
+		//System.out.println();
 		
 	}
 	
@@ -174,7 +175,7 @@ public class S3 {
 				skt.receive(request);
 			
 			//comment on the console
-				System.out.println("Data received from client");
+				//System.out.println("Data received from client");
 			
 			//Thread.sleep(5000);//for error check
 			
@@ -188,7 +189,7 @@ public class S3 {
 			
 			//Composing the reply message by appending start time,cost and password
 				reply_string=client_name+"\n"+movie_name+"\n"+time+"\n"+cost+"\n"+password;
-				System.out.println(reply_string);
+				//System.out.println(reply_string);
 				//Thread.sleep(5000); for error check
 				
 			//converting string message to byte
@@ -197,7 +198,7 @@ public class S3 {
 			//composing the data packet and sending it to the client's address and the same port the client used
 				DatagramPacket reply=new DatagramPacket(sendMsg,sendMsg.length,request.getAddress(),request.getPort());
 			
-			System.out.println("sending confirmation");
+			//System.out.println("sending confirmation");
 			
 			//Thread.sleep(5000);//for error check
 			
