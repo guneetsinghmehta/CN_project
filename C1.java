@@ -40,7 +40,7 @@ public class C1{
 				else if(i==2){host=server2Address;}
 				else if(i==3){host=server3Address;}
 				 request=new DatagramPacket(b,b.length,host,serversocket);
-				System.out.println("request sent from client to server");
+				//System.out.println("request sent from client to server");
 				Thread.sleep(S1.PAUSE_DURATION);//for error checks
 			
 			//Sending the packet- for getting the file size
@@ -52,11 +52,11 @@ public class C1{
 			
 			//receiving packet from server - contatining filesize
 				skt.receive(reply);
-				System.out.println("Response Received from server");
+				//System.out.println("Response Received from server");
 				
-				System.out.println("on Client: - filesize= "+new String(reply.getData()));
+				//System.out.println("on Client: - filesize= "+new String(reply.getData()));
 				filesize=Integer.parseInt(new String(reply.getData()).trim());
-				System.out.println("on Client: - filesize= "+filesize);
+				//System.out.println("on Client: - filesize= "+filesize);
 				Thread.sleep(S1.PAUSE_DURATION);
 			
 			}
@@ -104,10 +104,10 @@ public class C1{
 	public static void display_buffer(String a[])
 	{
 		int i;
-		System.out.println();
+		//System.out.println();
 		for(i=0;i<a.length&&a[i]!=null;i++)
 		{
-			System.out.println(a[i]);
+			//System.out.println(a[i]);
 		}
 	}
 }
