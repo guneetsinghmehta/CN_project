@@ -57,7 +57,7 @@ public class S3 {
 			}
 			catch(Exception e)
 			{
-				System.out.println(e);
+				//System.out.println(e);
 				//skt.close();
 			}
 			System.out.println(requested_packet);

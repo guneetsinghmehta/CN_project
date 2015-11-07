@@ -57,7 +57,7 @@ public class S1 {
 			}
 			catch(Exception e)
 			{
-				System.out.println(e);
+				//System.out.println(e);
 				//skt.close();
 			}
 			
