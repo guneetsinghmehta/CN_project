@@ -9,7 +9,7 @@ public class S1 {
 	private static Instrumentation instrumentation;
 	
 	public final static int PACKET_SIZE=1024;//packet size is 512 becuase each char is made of 2 bytes
-	public final static int FILESIZE=300;
+	public final static int FILESIZE=30000;
 	public final static int PORT_NUMBER_SERVER=6789;
 	public final static int PAUSE_DURATION=0;
 	
