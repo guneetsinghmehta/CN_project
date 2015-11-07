@@ -37,6 +37,7 @@ public class S1 {
 			
 			//making a packet with an inet address - 
 				int filesize= (int) new File(filename).length();
+				System.out.println(filesize);
 				String filesizeString=""+filesize;
 				//System.out.println(filesize);
 				InetAddress host = InetAddress.getByName(clientInetAddress);
