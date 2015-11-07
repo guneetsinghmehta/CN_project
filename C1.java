@@ -111,7 +111,7 @@ public class C1{
 						}
 						buffer_string[BUFFER_SIZE_CLIENT-1]=new String(reply.getData());
 					}
-					display_buffer(buffer_string);
+					//display_buffer(buffer_string);
 				}
 				Arrays.sort(delay);
 				float delay2[]=new float[filesize/S1.PACKET_SIZE];
@@ -123,6 +123,7 @@ public class C1{
 				
 				float [] Sk=new float[filesize/S1.PACKET_SIZE];
 				Sk[0]=(float) 0.0;
+			
 				for (i=1;i<filesize/S1.PACKET_SIZE;i++)
 				{
 					for(j=1;j<=i;j++)
@@ -131,13 +132,25 @@ public class C1{
 					}
 					Sk[i]=Sk[i]/(10*i);
 				}
+				make_output(Sk);
 				System.out.format("Sk at 2=%f\n,10=%f\n,20=%f\n,100=%f\n and 30000=%f\n ",Sk[1],Sk[9],Sk[19],Sk[99],Sk[29999]);
-				display_buffer(buffer_string);
+				//display_buffer(buffer_string);
 			skt.close();
 		}
 	}
 	
-	public static void display_buffer(String a[])
+	public static void make_output(float Sk[]) throws FileNotFoundException, UnsupportedEncodingException
+	{
+		PrintWriter writer = new PrintWriter("output.txt", "UTF-8");
+		float temp=(float) 10.0;
+		for(int i=0;i<Sk.length;i++)
+		{
+			writer.println(String.valueOf(Sk[i]));
+		}
+		writer.close();
+	}
+	
+ 	public static void display_buffer(String a[])
 	{
 		int i;
 		//System.out.println();
