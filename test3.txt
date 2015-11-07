@@ -1,5 +1,0 @@
-Now packets are going . Issues left
-1 Done making the size of file as 64 kb
-2 Done removing the thread.sleep command
-3 Done closing down the server when done - do in the catch function
-4 finding the delays of each packet - and store it somewhere
