@@ -31,12 +31,15 @@ public class S2{
 			DatagramSocket skt=new DatagramSocket(PORT_NUMBER_SERVER);
 			DatagramPacket request=new DatagramPacket(buffer,buffer.length);
 			
+			FileInputStream f1=new FileInputStream(filename);
+			float filesize= f1.getChannel().size();
+			f1.close();
 			//stop till you receive - request for filesize
 				wait(skt,request);
 				//System.out.println("On server side \nrequest received from Client");
 			
 			//making a packet with an inet address - 
-				int filesize= (int) new File(filename).length();
+				//int filesize= (int) new File(filename).length();
 				String filesizeString=""+filesize;
 				//System.out.println(filesize);
 				InetAddress host = InetAddress.getByName(clientInetAddress);

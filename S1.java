@@ -30,7 +30,10 @@ public class S1 {
 			byte [] buffer =new byte[PACKET_SIZE];
 			DatagramSocket skt=new DatagramSocket(PORT_NUMBER_SERVER);
 			DatagramPacket request=new DatagramPacket(buffer,buffer.length);
-			int filesize= (int) new File(filename).length();
+			//int filesize= (int) new File(filename).length();
+			FileInputStream f1=new FileInputStream(filename);
+			float filesize= f1.getChannel().size();
+			f1.close();
 			System.out.println(filesize);
 			//stop till you receive - request for filesize
 				wait(skt,request);
