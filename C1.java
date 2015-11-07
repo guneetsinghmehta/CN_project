@@ -67,6 +67,7 @@ public class C1{
 			String [] buffer_string=new String[BUFFER_SIZE_CLIENT];
 				for(i=0;i<filesize/S1.PACKET_SIZE;i++)
 				{
+					byte [] buffer =new byte[S1.PACKET_SIZE];
 					msg=String.valueOf(i);
 					b=msg.getBytes();
 					
