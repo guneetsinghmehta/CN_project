@@ -6,7 +6,7 @@ import java.text.*;
 
 public class C1{
 	public final static int PORT_NUMBER_CLIENT=6790;
-	public final static int BUFFER_SIZE_CLIENT=3;
+	public final static int BUFFER_SIZE_CLIENT=3*S1.PACKET_SIZE;
 	static int empty_index=0;
 	public static void main(String args[]) throws InterruptedException, IOException
 	{

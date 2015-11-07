@@ -44,7 +44,7 @@ public class S3 {
 				 
 			//Sending reply packet
 				System.out.println("Sending reply packet to client");
-				Thread.sleep(S3.PAUSE_DURATION);
+				Thread.sleep(S1.PAUSE_DURATION);
 				skt.send(reply);
 			
 		int i,requested_packet;		
@@ -53,7 +53,7 @@ public class S3 {
 			wait(skt,request);
 			requested_packet=Integer.parseInt(new String(request.getData()).trim());
 			System.out.println(requested_packet);
-			Thread.sleep(S3.PAUSE_DURATION);
+			Thread.sleep(S1.PAUSE_DURATION);
 			
 			c1=readData(in);
 			c1=readData(in);
@@ -91,7 +91,7 @@ public class S3 {
 		//stop till you receive 
 				skt.receive(request);
 				//System.out.println("request received");
-				Thread.sleep(S3.PAUSE_DURATION);
+				Thread.sleep(S1.PAUSE_DURATION);
 				
 	}
 	
