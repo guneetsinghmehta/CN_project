@@ -28,8 +28,8 @@ public class Cv2 {
 			
 			skt.send(request);
 			skt.receive(reply);
-			filesize=Integer.parseInt(new String(reply.getData()).trim());
-			
+			//filesize=Integer.parseInt(new String(reply.getData()).trim());
+		    String s1=new String(reply.getData()).trim();
 			if(Datav2.VERBOSE==1){System.out.println("size of file="+filesize);Functionsv2.pause();}
 		}
 		
