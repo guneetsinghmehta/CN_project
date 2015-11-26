@@ -35,7 +35,7 @@ public class Cv2 {
 			//filesize=Integer.parseInt(new String(reply.getData()).trim());
 		    String s1=new String(reply.getData()).trim();
 		    Functionsv2.display("filesize received from server"+i+"="+s1);
-			
+			//Working version -25th Nov 10 pm
 		}
 		
 	}
