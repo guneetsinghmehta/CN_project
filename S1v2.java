@@ -9,6 +9,9 @@ public class S1v2 {
 	public static void main(String args[]) throws IOException
 	{
 		Functionsv2.makeTextFile(Datav2.FILENAME);
+		FileReader fr=new FileReader(Datav2.FILENAME);BufferedReader textReader=new BufferedReader(fr);
+		char[] textData=textReader.readLine().toCharArray();
+		
 		//Socket declare
 		DatagramSocket skt=Functionsv2.createServerSocket();
 		DatagramPacket request=Functionsv2.createPacket();//client request
@@ -26,6 +29,14 @@ public class S1v2 {
 		reply.setData(filesizeString.getBytes());
 		Functionsv2.display("reply sent to  client");
 		skt.send(reply);
+		
+		int i;
+		for(i=1;i<Datav2.NUM_UNIQUE_CHARACTERS;i++)
+		{
+			Functionsv2.display(Functionsv2.readPacketFromFile(textData, i));
+		}
+		
+		
 	}
 	
 	
