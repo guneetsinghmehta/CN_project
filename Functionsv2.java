@@ -6,13 +6,28 @@ import java.text.*;
 
 public class Functionsv2 {
 	//Functions implemented - function attributes are changed by changing factors in constants
-		/* makePacket - characters
-		 * makePacket - string
+		/* createSocket
+		 * createPacket - characters
+		 * createPacket - string
 		 * pause
 		 * makeTextFile - input as Datav2.FILENAME , DATA
 		 * displayPacket
 		 * readData
+		 * getFileSize
+		 * 
 		 */
+	public static DatagramSocket createSocket() throws SocketException
+	{
+		DatagramSocket skt=new DatagramSocket(Datav2.PORT_NUMBER_SERVER);
+		return skt;
+	}
+	
+	public static DatagramPacket createPacket()
+	{
+		byte [] buffer =new byte[Datav2.PACKET_SIZE];
+		DatagramPacket pkt=new DatagramPacket(buffer,buffer.length);
+		return pkt;
+	}
 		
 	public static void makeTextFile(String fwrite) throws IOException
 	{
@@ -29,5 +44,15 @@ public class Functionsv2 {
 		}
 		writer.close();
 	}
+
+	public static void pause() throws InterruptedException
+	{
+		Thread.sleep(Datav2.PAUSE_DURATION);
+	}
 	
+	public static int getFileSize()
+	{
+		int filesize= (int) new File(Datav2.FILENAME).length();
+		return filesize;
+	}
 }
