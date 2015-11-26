@@ -21,7 +21,7 @@ public class S1v2 {
 		String filesizeString=""+Functionsv2.getFileSize();
 		InetAddress host = InetAddress.getByName(Datav2.CLIENT_ADDRESS);
 		
-		reply.setAddress(InetAddress.getByName(Datav2.SERVER1_ADDRESS));
+		reply.setAddress(InetAddress.getByName(Datav2.CLIENT_ADDRESS));
 		reply.setPort(Datav2.PORT_NUMBER_CLIENT);
 		reply.setData(filesizeString.getBytes());
 		Functionsv2.display("reply sent to  client");
