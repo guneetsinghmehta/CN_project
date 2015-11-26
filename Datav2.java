@@ -26,11 +26,13 @@ public class Datav2 {
 	public static final  int BUFFER_SIZE_CLIENT=32;
 	public static final  int NUM_UNIQUE_CHARACTERS=2;
 	public static final  int PACKET_SIZE=1;
-	public static final  int VERBOSE=0;
+	public static final  int VERBOSE=1;
 	public static final  String SERVER1_ADDRESS="10.10.3.2";
+	//public static final  String SERVER1_ADDRESS="localhost";
 	public static final  String SERVER2_ADDRESS="10.10.4.2";
 	public static final  String SERVER3_ADDRESS="10.10.1.2";
 	public static final  String SERVER4_ADDRESS="10.10.2.2";
+	//public static final  String CLIENT_ADDRESS="localhost";
 	public static final  String CLIENT_ADDRESS="10.10.7.1";
 	public static final int PAUSE_DURATION=3000;
 	public static final String FILENAME="text1.txt";

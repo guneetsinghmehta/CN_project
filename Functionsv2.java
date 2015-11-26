@@ -16,11 +16,18 @@ public class Functionsv2 {
 		 * getFileSize
 		 * 
 		 */
-	public static DatagramSocket createSocket() throws SocketException
+	public static DatagramSocket createServerSocket() throws SocketException
 	{
 		DatagramSocket skt=new DatagramSocket(Datav2.PORT_NUMBER_SERVER);
 		return skt;
 	}
+	
+	public static DatagramSocket createClientSocket() throws SocketException
+	{
+		DatagramSocket skt=new DatagramSocket(Datav2.PORT_NUMBER_CLIENT);
+		return skt;
+	}
+	
 	
 	public static DatagramPacket createPacket()
 	{
@@ -59,12 +66,13 @@ public class Functionsv2 {
 	public static void display(String s1)
 	{
 		if(Datav2.VERBOSE==1)
-		{System.out.println("s1");try {
-			Thread.sleep(Datav2.PAUSE_DURATION);
+		{System.out.println(s1);}
+		try {
+			Functionsv2.pause();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}}
+		}
 	}
 	
 }

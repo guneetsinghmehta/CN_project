@@ -8,8 +8,8 @@ import java.lang.instrument.Instrumentation;
 public class Cv2 {
 	public static void main(String args[]) throws IOException, InterruptedException
 	{
-		int i,filesize;
-		DatagramSocket skt=Functionsv2.createSocket();
+		int i,filesize=1;
+		DatagramSocket skt=Functionsv2.createClientSocket();
 		DatagramPacket request=Functionsv2.createPacket();
 		DatagramPacket reply=Functionsv2.createPacket();
 		
@@ -18,6 +18,7 @@ public class Cv2 {
 		
 		//now contacting the serverss for the first time
 		InetAddress host=InetAddress.getByName(Datav2.SERVER1_ADDRESS);
+		
 		for (i=1;i<=4;i++)
 		{
 			if(i==1)host=InetAddress.getByName(Datav2.SERVER1_ADDRESS);
@@ -26,11 +27,15 @@ public class Cv2 {
 			else if(i==4)host=InetAddress.getByName(Datav2.SERVER4_ADDRESS);
 			request.setAddress(host);request.setPort(Datav2.PORT_NUMBER_SERVER);
 			
+			reply.setAddress(host);reply.setPort(Datav2.PORT_NUMBER_SERVER);
+			Functionsv2.display("request sent by client");
 			skt.send(request);
 			skt.receive(reply);
+			Functionsv2.display("reply received by client");
 			//filesize=Integer.parseInt(new String(reply.getData()).trim());
 		    String s1=new String(reply.getData()).trim();
-			if(Datav2.VERBOSE==1){System.out.println("size of file="+filesize);Functionsv2.pause();}
+		    Functionsv2.display("filesize received from server"+i+"="+s1);
+			
 		}
 		
 	}
