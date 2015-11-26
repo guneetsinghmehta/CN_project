@@ -32,6 +32,7 @@ public class Datav2 {
 	public static final  String SERVER3_ADDRESS="10.10.1.2";
 	public static final  String SERVER4_ADDRESS="10.10.2.2";
 	public static final  String CLIENT_ADDRESS="10.10.7.1";
+	public static final int PAUSE_DURATION=3000;
 	public static final String FILENAME="text1.txt";
 	
 }

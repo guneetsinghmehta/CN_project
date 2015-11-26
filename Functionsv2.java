@@ -55,4 +55,16 @@ public class Functionsv2 {
 		int filesize= (int) new File(Datav2.FILENAME).length();
 		return filesize;
 	}
+
+	public static void display(String s1)
+	{
+		if(Datav2.VERBOSE==1)
+		{System.out.println("s1");try {
+			Thread.sleep(Datav2.PAUSE_DURATION);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}}
+	}
+	
 }
