@@ -6,7 +6,7 @@ import java.util.*;
 import java.lang.instrument.Instrumentation;
 
 public class S3v2 {
-	public static void main(String args[]) throws IOException
+	public static void main(String args[]) throws IOException, InterruptedException
 	{
 		Functionsv2.makeTextFile(Datav2.FILENAME);
 		FileReader fr=new FileReader(Datav2.FILENAME);BufferedReader textReader=new BufferedReader(fr);
@@ -29,17 +29,20 @@ public class S3v2 {
 		reply.setData(filesizeString.getBytes());
 		Functionsv2.display("reply sent to  client");
 		skt.send(reply);
-		
-		int i;
+		int query,i;
+		String replyString,requestString;
 		for(i=0;i<Datav2.NUM_UNIQUE_CHARACTERS;i++)
 		{
 			skt.receive(request);
-			String s1=Functionsv2.readPacketFromFile(textData, i+1);
-			Functionsv2.updatePacket(reply, Datav2.CLIENT_ADDRESS, Datav2.PORT_NUMBER_CLIENT,s1 );
+			requestString=Functionsv2.getPacketString(request);
+			requestString=requestString.substring(0, requestString.length()-1);
+			query=Integer.parseInt(requestString);
+			replyString=Functionsv2.readPacketFromFile(textData, query+1);
+			Functionsv2.updatePacket(reply, Datav2.CLIENT_ADDRESS, Datav2.PORT_NUMBER_CLIENT,replyString );
 			skt.send(reply);
 			//Functionsv2.displayPacket(reply);
 		}
-		//yes anuj ?
+		
 		
 		
 	}

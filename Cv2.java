@@ -40,13 +40,15 @@ public class Cv2 {
 		
 		host=InetAddress.getByName(Datav2.SERVER1_ADDRESS);
 		//packet being used - request
-		String requestString=new String("req");
+		String requestString=new String();
 		
 		for (i=0;i<Datav2.NUM_UNIQUE_CHARACTERS;i++)
 		{
+			requestString=Integer.toString(i);
 			Functionsv2.updatePacket(request, Datav2.SERVER1_ADDRESS, Datav2.PORT_NUMBER_SERVER, requestString);
 			skt.send(request);
 			Functionsv2.delay();
+			
 			skt.receive(reply);
 			Functionsv2.displayPacket(reply);
 		}

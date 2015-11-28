@@ -56,7 +56,7 @@ public class Functionsv2 {
 		pkt.setData(packetData.getBytes());
 	}	
 	
-	public static void pause() throws InterruptedException
+	public static void pause() throws InterruptedException 
 	{
 		Thread.sleep(Datav2.PAUSE_DURATION);
 	}
@@ -94,6 +94,12 @@ public class Functionsv2 {
 		}
 		*/
 	}
+	
+	public static String getPacketString(DatagramPacket pkt) 
+	{
+		return new String(pkt.getData()).trim();
+	}
+	
 	
 	public static void display(String s1)
 	{
