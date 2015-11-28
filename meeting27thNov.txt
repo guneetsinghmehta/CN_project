@@ -1,0 +1,29 @@
+Agenda for today
+1 Done Get packets correctly from all servers - correct Scenario A - server 1 - local host 
+2 Done Make sure the transfers take place within 5 minutes - 
+
+ 
+
+on website - mentioned 30,000 frames 0f 1Kb and delay =100ms
+but then total time =3000 seconds i.e. 50 min
+
+but in class - he said 300 seconds , so lets take 3000 frames - with delay of 100ms
+
+
+
+Sanika, are you able to hear me ? If yes then connect your mic as well
+
+Anuj , I can hear you
+
+guys open whatsapp !
+
+19:16:04
+
+19:21:07 
+
+1 Done get string from client , convert it to a number
+2 Done use number to make reply packet in server
+3 DOne make round robin calls to servers - add condition
+4 Done Change addresses in Datav2
+5 Done run on GENI
+6 make log on client side
