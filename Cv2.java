@@ -53,6 +53,7 @@ public class Cv2 {
 			else if(i%4==3){requestedServerAddress=Datav2.SERVER4_ADDRESS;requestedServerNumber=4;}
 			//requestedServerAddress=Datav2.SERVER1_ADDRESS;
 			Functionsv2.updatePacket(request, requestedServerAddress, Datav2.PORT_NUMBER_SERVER, requestString);
+			System.out.println(requestString);
 			skt.send(request);
 			Functionsv2.delay();
 			
