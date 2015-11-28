@@ -116,6 +116,7 @@ public class Functionsv2 {
 			a=a+delaysFinal[i];
 		}
 		a=a/k;
+		a=a/10;
 		return a;
 	}
 	
