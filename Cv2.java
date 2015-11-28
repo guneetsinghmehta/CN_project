@@ -44,6 +44,7 @@ public class Cv2 {
 		String requestedServerAddress=new String();
 		int requestedServerNumber;
 		float[] delays=new float[Datav2.NUM_UNIQUE_CHARACTERS];float delayTemp;
+		float[] delaysFinal=new float[Datav2.NUM_UNIQUE_CHARACTERS];
 		for (i=0;i<Datav2.NUM_UNIQUE_CHARACTERS;i++)
 		{
 			requestString=Integer.toString(i+1);
@@ -64,6 +65,18 @@ public class Cv2 {
 			delays[i]=delayTemp/1000000;
 			Functionsv2.displayPacket(reply);
 		}
+		Arrays.sort(delays);
+		for(i=0;i<delays.length;i++)
+		{
+			delaysFinal[i]=delays[delays.length-i-1];
+		}
+		float S2,S10,S20,S100,S3000;
+		S2=Functionsv2.getSk(delaysFinal, 2);
+		S10=Functionsv2.getSk(delaysFinal, 10);
+		S20=Functionsv2.getSk(delaysFinal, 20);
+		S100=Functionsv2.getSk(delaysFinal, 100);
+		S3000=Functionsv2.getSk(delaysFinal, 3000);
+		System.out.println("S2="+S2+" S10="+S10+" S20="+S20+" S100="+S100+" S3000="+S3000);
 		System.out.println("done");
 			
 		

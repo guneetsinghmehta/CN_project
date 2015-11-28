@@ -107,7 +107,17 @@ public class Functionsv2 {
 		//System.out.println(s2.length());
 		return s2;
 	}
-	
+
+	public static float getSk(float delaysFinal[],int k)
+	{
+		float a=0;int i;
+		for(i=0;i<k;i++)
+		{
+			a=a+delaysFinal[i];
+		}
+		a=a/k;
+		return a;
+	}
 	
 	public static void display(String s1)
 	{
