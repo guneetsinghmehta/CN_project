@@ -19,7 +19,7 @@ public class Cv2 {
 		//now contacting the serverss for the first time
 		InetAddress host=InetAddress.getByName(Datav2.SERVER1_ADDRESS);
 		
-		for (i=1;i<=4;i++)
+		for (i=1;i<=1;i++)
 		{
 			if(i==1)host=InetAddress.getByName(Datav2.SERVER1_ADDRESS);
 			else if(i==2)host=InetAddress.getByName(Datav2.SERVER2_ADDRESS);
@@ -40,20 +40,20 @@ public class Cv2 {
 		
 		host=InetAddress.getByName(Datav2.SERVER1_ADDRESS);
 		//packet being used - request
-		String requestString=new String();
+		String requestString=new String("1");
 		String requestedServerAddress=new String();
 		int requestedServerNumber;
 		for (i=0;i<Datav2.NUM_UNIQUE_CHARACTERS;i++)
 		{
-			requestString=Integer.toString(i);
-			
+			requestString=Integer.toString(i+1);
+			//System.out.println(requestString);
 			if(i%4==0){requestedServerAddress=Datav2.SERVER1_ADDRESS;requestedServerNumber=1;}
 			else if(i%4==1){requestedServerAddress=Datav2.SERVER2_ADDRESS;requestedServerNumber=2;}
 			else if(i%4==2){requestedServerAddress=Datav2.SERVER3_ADDRESS;requestedServerNumber=3;}
 			else if(i%4==3){requestedServerAddress=Datav2.SERVER4_ADDRESS;requestedServerNumber=4;}
-			//requestedServerAddress=Datav2.SERVER1_ADDRESS;
+			requestedServerAddress=Datav2.SERVER1_ADDRESS;
 			Functionsv2.updatePacket(request, requestedServerAddress, Datav2.PORT_NUMBER_SERVER, requestString);
-			System.out.println(requestString);
+			
 			skt.send(request);
 			Functionsv2.delay();
 			

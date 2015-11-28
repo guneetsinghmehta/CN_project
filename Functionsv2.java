@@ -99,7 +99,13 @@ public class Functionsv2 {
 	
 	public static String getPacketString(DatagramPacket pkt) 
 	{
-		return new String(pkt.getData()).trim();
+		String s1,s2;
+		s1= new String(pkt.getData()).trim();
+		s2=s1.substring(s1.length()-14, s1.length()-13);
+		//System.out.println(s1.length());
+		//System.out.println(s2);
+		//System.out.println(s2.length());
+		return s2;
 	}
 	
 	
