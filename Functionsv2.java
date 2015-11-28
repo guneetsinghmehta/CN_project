@@ -70,6 +70,8 @@ public class Functionsv2 {
 	{
 		BufferedWriter writer=new BufferedWriter(new FileWriter(fwrite));
 		int i,j,k;
+		System.out.println(Datav2.NUM_UNIQUE_CHARACTERS);
+		System.out.println(Datav2.PACKET_SIZE);
 		k=65;
 		for(i=0;i<Datav2.NUM_UNIQUE_CHARACTERS;i++)
 		{
