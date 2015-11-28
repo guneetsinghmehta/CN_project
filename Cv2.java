@@ -50,6 +50,7 @@ public class Cv2 {
 			skt.receive(reply);
 			Functionsv2.displayPacket(reply);
 		}
+		System.out.println("done");
 			
 		
 	}
