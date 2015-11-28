@@ -49,6 +49,13 @@ public class Functionsv2 {
 		return pkt;
 	}
 	
+	public static void updatePacket(DatagramPacket pkt,String destinationInetAddreess, int destinationHostPortNumber,String packetData) throws UnknownHostException
+	{
+		pkt.setAddress(InetAddress.getByName(destinationInetAddreess));
+		pkt.setPort(destinationHostPortNumber);
+		pkt.setData(packetData.getBytes());
+	}	
+	
 	public static void pause() throws InterruptedException
 	{
 		Thread.sleep(Datav2.PAUSE_DURATION);
@@ -66,11 +73,11 @@ public class Functionsv2 {
 		k=65;
 		for(i=0;i<Datav2.NUM_UNIQUE_CHARACTERS;i++)
 		{
+			if(i%2==0){k=65;}else{k=66;}
 			for(j=0;j<Datav2.PACKET_SIZE;j++)
 			{
 				writer.write((char)k);
 			}
-			k=k+1;
 		}
 		writer.close();
 	}
@@ -78,12 +85,14 @@ public class Functionsv2 {
 	public static void displayPacket(DatagramPacket pkt) 
 	{
 		System.out.println(new String(pkt.getData()).trim());
+		/*
 		try {
 			Functionsv2.pause();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		*/
 	}
 	
 	public static void display(String s1)
@@ -115,3 +124,4 @@ public class Functionsv2 {
 		return s1;
 	}
 }
+

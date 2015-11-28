@@ -19,7 +19,7 @@ public class Cv2 {
 		//now contacting the serverss for the first time
 		InetAddress host=InetAddress.getByName(Datav2.SERVER1_ADDRESS);
 		
-		for (i=1;i<=4;i++)
+		for (i=1;i<=1;i++)
 		{
 			if(i==1)host=InetAddress.getByName(Datav2.SERVER1_ADDRESS);
 			else if(i==2)host=InetAddress.getByName(Datav2.SERVER2_ADDRESS);
@@ -37,6 +37,20 @@ public class Cv2 {
 		    Functionsv2.display("filesize received from server"+i+"="+s1);
 			//Working version -25th Nov 10 pm
 		}
+		
+		host=InetAddress.getByName(Datav2.SERVER1_ADDRESS);
+		//packet being used - request
+		String requestString=new String("req");
+		
+		for (i=0;i<Datav2.NUM_UNIQUE_CHARACTERS;i++)
+		{
+			Functionsv2.updatePacket(request, Datav2.SERVER1_ADDRESS, Datav2.PORT_NUMBER_SERVER, requestString);
+			skt.send(request);
+			Functionsv2.delay();
+			skt.receive(reply);
+			Functionsv2.displayPacket(reply);
+		}
+			
 		
 	}
 }

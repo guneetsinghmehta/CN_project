@@ -31,10 +31,10 @@ public class Datav2 {
 	public static final  int PORT_NUMBER_CLIENT=6790;
 	public static final  int PORT_NUMBER_SERVER=6789;
 	public static final  int BUFFER_SIZE_CLIENT=32;
-	public static final  int NUM_UNIQUE_CHARACTERS=10;
-	public static final  int PACKET_SIZE=4;
+	public static final  int NUM_UNIQUE_CHARACTERS=3000;
+	public static final  int PACKET_SIZE=1024;
 	public static final  int VERBOSE=1;
-	public static final int PAUSE_DURATION=3000;
+	public static final int PAUSE_DURATION=1000;
 	public static final int DELAY_DURATION=100;
 	public static final String FILENAME="text1.txt";
 	//public static final  String SERVER1_ADDRESS="10.10.3.2";

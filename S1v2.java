@@ -31,10 +31,15 @@ public class S1v2 {
 		skt.send(reply);
 		
 		int i;
-		for(i=1;i<Datav2.NUM_UNIQUE_CHARACTERS;i++)
+		for(i=0;i<Datav2.NUM_UNIQUE_CHARACTERS;i++)
 		{
-			Functionsv2.display(Functionsv2.readPacketFromFile(textData, i));
+			skt.receive(request);
+			String s1=Functionsv2.readPacketFromFile(textData, i+1);
+			Functionsv2.updatePacket(reply, Datav2.CLIENT_ADDRESS, Datav2.PORT_NUMBER_CLIENT,s1 );
+			skt.send(reply);
+			//Functionsv2.displayPacket(reply);
 		}
+		//yes anuj ?
 		
 		
 	}
