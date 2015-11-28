@@ -36,7 +36,7 @@ public class Datav2 {
 	public static final  int VERBOSE=1;
 	public static final int PAUSE_DURATION=1000;
 	public static final int DELAY_DURATION=100;
-	public static final String FILENAME="text1.txt";
+	public static final String FILENAME="text2.txt";
 	public static final  String SERVER1_ADDRESS="10.10.3.2";
 	//public static final  String SERVER1_ADDRESS="localhost";
 	public static final  String SERVER2_ADDRESS="10.10.4.2";
