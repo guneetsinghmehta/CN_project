@@ -43,6 +43,7 @@ public class Cv2 {
 		String requestString=new String("1");
 		String requestedServerAddress=new String();
 		int requestedServerNumber;
+		float[] delays=new float[Datav2.NUM_UNIQUE_CHARACTERS];float delayTemp;
 		for (i=0;i<Datav2.NUM_UNIQUE_CHARACTERS;i++)
 		{
 			requestString=Integer.toString(i+1);
@@ -54,10 +55,13 @@ public class Cv2 {
 			//requestedServerAddress=Datav2.SERVER1_ADDRESS;
 			Functionsv2.updatePacket(request, requestedServerAddress, Datav2.PORT_NUMBER_SERVER, requestString);
 			
+			delayTemp=System.nanoTime();
 			skt.send(request);
 			Functionsv2.delay();
 			
 			skt.receive(reply);
+			delayTemp=System.nanoTime()-delayTemp;
+			delays[i]=delayTemp/1000000;
 			Functionsv2.displayPacket(reply);
 		}
 		System.out.println("done");
