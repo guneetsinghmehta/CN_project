@@ -19,7 +19,7 @@ public class Cv2 {
 		//now contacting the serverss for the first time
 		InetAddress host=InetAddress.getByName(Datav2.SERVER1_ADDRESS);
 		
-		for (i=1;i<=1;i++)
+		for (i=1;i<=4;i++)
 		{
 			if(i==1)host=InetAddress.getByName(Datav2.SERVER1_ADDRESS);
 			else if(i==2)host=InetAddress.getByName(Datav2.SERVER2_ADDRESS);
