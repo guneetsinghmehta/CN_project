@@ -19,7 +19,7 @@ public class Cv2 {
 		//now contacting the serverss for the first time
 		InetAddress host=InetAddress.getByName(Datav2.SERVER1_ADDRESS);
 		
-		for (i=1;i<=1;i++)
+		for (i=1;i<=4;i++)
 		{
 			if(i==1)host=InetAddress.getByName(Datav2.SERVER1_ADDRESS);
 			else if(i==2)host=InetAddress.getByName(Datav2.SERVER2_ADDRESS);
@@ -51,7 +51,7 @@ public class Cv2 {
 			else if(i%4==1){requestedServerAddress=Datav2.SERVER2_ADDRESS;requestedServerNumber=2;}
 			else if(i%4==2){requestedServerAddress=Datav2.SERVER3_ADDRESS;requestedServerNumber=3;}
 			else if(i%4==3){requestedServerAddress=Datav2.SERVER4_ADDRESS;requestedServerNumber=4;}
-			requestedServerAddress=Datav2.SERVER1_ADDRESS;
+			//requestedServerAddress=Datav2.SERVER1_ADDRESS;
 			Functionsv2.updatePacket(request, requestedServerAddress, Datav2.PORT_NUMBER_SERVER, requestString);
 			
 			skt.send(request);
