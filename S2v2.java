@@ -36,11 +36,10 @@ public class S2v2 {
 			skt.receive(request);
 			requestString=Functionsv2.getPacketString(request);
 			//System.out.println(requestString);
-			requestString=requestString.substring(0, requestString.length());
+			//requestString=requestString.substring(0, requestString.length());
 			query=Integer.parseInt(requestString);
 			replyString=Functionsv2.readPacketFromFile(textData, query+1);
 			Functionsv2.updatePacket(reply, Datav2.CLIENT_ADDRESS, Datav2.PORT_NUMBER_CLIENT,replyString );
-			System.out.println(query);
 			skt.send(reply);
 			//Functionsv2.displayPacket(reply);
 		}
