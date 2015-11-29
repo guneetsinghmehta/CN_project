@@ -13,7 +13,7 @@ public class Cv2 {
 		DatagramPacket request=Functionsv2.createPacket();
 		DatagramPacket reply=Functionsv2.createPacket();
 		
-		String msg="Send file size";byte[] b=msg.getBytes();
+		String msg="0";byte[] b=msg.getBytes();
 		request.setData(b);
 		
 		//now contacting the serverss for the first time
