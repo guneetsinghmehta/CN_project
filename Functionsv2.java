@@ -101,11 +101,11 @@ public class Functionsv2 {
 	{
 		String s1,s2;
 		s1= new String(pkt.getData()).trim();
-		s2=s1.substring(s1.length()-14, s1.length()-13);
+		//s2=s1.substring(s1.length()-14, s1.length()-13);
 		//System.out.println(s1.length());
 		//System.out.println(s2);
 		//System.out.println(s2.length());
-		return s2;
+		return s1;
 	}
 
 	public static float getSk(float delaysFinal[],int k)
