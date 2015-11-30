@@ -92,7 +92,7 @@ public class Cv3 {
 					skt.receive(reply);
 					delayTemp=System.nanoTime()-delayTemp;
 					delayTemp=delayTemp/1000000;
-					delayTemp=delayTemp+1000;
+					delayTemp=delayTemp+Datav2.DELAY_DURATION;
 					if(j==0){s1avg=delayTemp;}
 					if(j==1){s2avg=delayTemp;}
 					if(j==2){s3avg=delayTemp;}
