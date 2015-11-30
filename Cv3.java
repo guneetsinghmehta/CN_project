@@ -41,22 +41,24 @@ public class Cv3 {
 		//packet being used - request
 		String requestString=new String("1");
 		String requestedServerAddress=new String();
+		String requestedServerAddressOld=new String();
 		int requestedServerNumber;
 		float[] delays=new float[Datav2.NUM_UNIQUE_CHARACTERS];float delayTemp;
 		float[] delaysFinal=new float[Datav2.NUM_UNIQUE_CHARACTERS];
 		
 		//initialising s1avg--2,3,4
 		s1avg=(float) 1.0*Datav2.DELAY_DURATION;
-		s2avg=(float) 1.01*Datav2.DELAY_DURATION;;
-		s3avg=(float) 1.02*Datav2.DELAY_DURATION;;
-		s4avg=(float) 1.03*Datav2.DELAY_DURATION;;
+		s2avg=(float) 1.0001*Datav2.DELAY_DURATION;;
+		s3avg=(float) 1.0002*Datav2.DELAY_DURATION;;
+		s4avg=(float) 1.0003*Datav2.DELAY_DURATION;;
 
+		int repeats=0;int j;
 		for (i=0;i<Datav2.NUM_UNIQUE_CHARACTERS;i++)
 		{
 			requestString=Integer.toString(i+1);
 			//System.out.println(requestString);
 			requestedServerAddress=Functionsv2.getAddressOfMinServer(s1avg,s2avg,s3avg,s4avg); 
-			
+			if(i==0){requestedServerAddressOld=Datav2.SERVER2_ADDRESS;}
 			//requestedServerAddress=Datav2.SERVER1_ADDRESS;
 			
 			Functionsv2.updatePacket(request, requestedServerAddress, Datav2.PORT_NUMBER_SERVER, requestString);
@@ -72,7 +74,26 @@ public class Cv3 {
 			else if(requestedServerAddress==Datav2.SERVER2_ADDRESS){s2avg=Datav2.BETA*s2avg+(1-Datav2.BETA)*delayTemp;System.out.println("2"+"\ts1avg = "+s1avg+"\ts2avg = "+s2avg+"\ts3avg = "+s3avg+"\ts4avg = "+s4avg);}
 			else if(requestedServerAddress==Datav2.SERVER3_ADDRESS){s3avg=Datav2.BETA*s3avg+(1-Datav2.BETA)*delayTemp;System.out.println("3"+"\ts1avg = "+s1avg+"\ts2avg = "+s2avg+"\ts3avg = "+s3avg+"\ts4avg = "+s4avg);}
 			else if(requestedServerAddress==Datav2.SERVER4_ADDRESS){s4avg=Datav2.BETA*s4avg+(1-Datav2.BETA)*delayTemp;System.out.println("4"+"\ts1avg = "+s1avg+"\ts2avg = "+s2avg+"\ts3avg = "+s3avg+"\ts4avg = "+s4avg);}
-			
+			if(requestedServerAddress==requestedServerAddressOld){repeats++;}
+			//removing deadlock
+			if(repeats==Datav2.MAX_REPEAT)
+			{
+				for(j=0;j<4;j++)
+				{
+					delayTemp=System.nanoTime();
+					skt.send(request);
+					Functionsv2.delay();
+					skt.receive(reply);
+					delayTemp=System.nanoTime()-delayTemp;
+					delayTemp=delayTemp/1000000;
+					if(j==0){s1avg=delayTemp;}
+					if(j==1){s2avg=delayTemp;}
+					if(j==2){s3avg=delayTemp;}
+					if(j==3){s4avg=delayTemp;}
+				}
+				repeats=0;
+			}
+			requestedServerAddressOld=requestedServerAddress;
 			//Functionsv2.displayPacket(reply);
 		}
 		Arrays.sort(delays);
