@@ -66,12 +66,12 @@ public class Cv3 {
 			skt.receive(reply);
 			delayTemp=System.nanoTime()-delayTemp;
 			delays[i]=delayTemp/1000000;
-			
+			delayTemp=delayTemp/1000000;
 			//reassigining values to savg
-			if(requestedServerAddress==Datav2.SERVER1_ADDRESS){s1avg=Datav2.BETA*s1avg+(1-Datav2.BETA)*delayTemp;System.out.println("1"+"\ts1avg="+s1avg+"\ts2avg"+s2avg+"\ts3avg"+s3avg+"\ts4avg"+s4avg);}
-			else if(requestedServerAddress==Datav2.SERVER2_ADDRESS){s2avg=Datav2.BETA*s2avg+(1-Datav2.BETA)*delayTemp;System.out.println("2"+"\ts1avg="+s1avg+"\ts2avg"+s2avg+"\ts3avg"+s3avg+"\ts4avg"+s4avg);}
-			else if(requestedServerAddress==Datav2.SERVER3_ADDRESS){s3avg=Datav2.BETA*s3avg+(1-Datav2.BETA)*delayTemp;System.out.println("3"+"\ts1avg="+s1avg+"\ts2avg"+s2avg+"\ts3avg"+s3avg+"\ts4avg"+s4avg);}
-			else if(requestedServerAddress==Datav2.SERVER4_ADDRESS){s4avg=Datav2.BETA*s4avg+(1-Datav2.BETA)*delayTemp;System.out.println("4"+"\ts1avg="+s1avg+"\ts2avg"+s2avg+"\ts3avg"+s3avg+"\ts4avg"+s4avg);}
+			if(requestedServerAddress==Datav2.SERVER1_ADDRESS){s1avg=Datav2.BETA*s1avg+(1-Datav2.BETA)*delayTemp;System.out.println("1"+"\ts1avg = "+s1avg+"\ts2avg = "+s2avg+"\ts3avg = "+s3avg+"\ts4avg = "+s4avg);}
+			else if(requestedServerAddress==Datav2.SERVER2_ADDRESS){s2avg=Datav2.BETA*s2avg+(1-Datav2.BETA)*delayTemp;System.out.println("2"+"\ts1avg = "+s1avg+"\ts2avg = "+s2avg+"\ts3avg = "+s3avg+"\ts4avg = "+s4avg);}
+			else if(requestedServerAddress==Datav2.SERVER3_ADDRESS){s3avg=Datav2.BETA*s3avg+(1-Datav2.BETA)*delayTemp;System.out.println("3"+"\ts1avg = "+s1avg+"\ts2avg = "+s2avg+"\ts3avg = "+s3avg+"\ts4avg = "+s4avg);}
+			else if(requestedServerAddress==Datav2.SERVER4_ADDRESS){s4avg=Datav2.BETA*s4avg+(1-Datav2.BETA)*delayTemp;System.out.println("4"+"\ts1avg = "+s1avg+"\ts2avg = "+s2avg+"\ts3avg = "+s3avg+"\ts4avg = "+s4avg);}
 			
 			//Functionsv2.displayPacket(reply);
 		}
