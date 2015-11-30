@@ -108,9 +108,9 @@ public class Functionsv2 {
 		return s1;
 	}
 
-	public static float getSk(float delaysFinal[],int k)
+	public static double getSk(double delaysFinal[],int k)
 	{
-		float a=0;int i;
+		double a=0;int i;
 		for(i=0;i<k;i++)
 		{
 			a=a+delaysFinal[i];
@@ -149,7 +149,7 @@ public class Functionsv2 {
 		return s1;
 	}
 	
-	public static String getAddressOfMinServer(float s1,float s2,float s3,float s4)
+	public static String getAddressOfMinServer(double s1,double s2,double s3,double s4)
 	{
 		String ans = Datav2.SERVER1_ADDRESS;
 		if(s1<s2&&s1<s3&&s1<s4){ans=Datav2.SERVER1_ADDRESS;}

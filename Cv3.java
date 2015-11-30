@@ -16,7 +16,7 @@ public class Cv3 {
 		request.setData(b);
 		//now contacting the serverss for the first time
 		InetAddress host=InetAddress.getByName(Datav2.SERVER1_ADDRESS);
-		float s1avg,s2avg,s3avg,s4avg;
+		double s1avg,s2avg,s3avg,s4avg;
 		
 		for (i=1;i<=4;i++)
 		{
@@ -43,14 +43,15 @@ public class Cv3 {
 		String requestedServerAddress=new String();
 		String requestedServerAddressOld=new String();
 		int requestedServerNumber;
-		float[] delays=new float[Datav2.NUM_UNIQUE_CHARACTERS];float delayTemp;
-		float[] delaysFinal=new float[Datav2.NUM_UNIQUE_CHARACTERS];
+		double[] delays=new double[Datav2.NUM_UNIQUE_CHARACTERS];
+		double delayTemp;
+		double[] delaysFinal=new double[Datav2.NUM_UNIQUE_CHARACTERS];
 		
 		//initialising s1avg--2,3,4
-		s1avg=(float) 1.0*Datav2.DELAY_DURATION;
-		s2avg=(float) 1.0001*Datav2.DELAY_DURATION;;
-		s3avg=(float) 1.0002*Datav2.DELAY_DURATION;;
-		s4avg=(float) 1.0003*Datav2.DELAY_DURATION;;
+		s1avg=(double) 1.0*Datav2.DELAY_DURATION;
+		s2avg=(double) 1.0001*Datav2.DELAY_DURATION;;
+		s3avg=(double) 1.0002*Datav2.DELAY_DURATION;;
+		s4avg=(double) 1.0003*Datav2.DELAY_DURATION;;
 
 		int repeats=0;int j;
 		for (i=0;i<Datav2.NUM_UNIQUE_CHARACTERS;i++)
@@ -86,7 +87,7 @@ public class Cv3 {
 					else if(j==1){request.setAddress(InetAddress.getByName(Datav2.SERVER2_ADDRESS));}
 					else if(j==2){request.setAddress(InetAddress.getByName(Datav2.SERVER3_ADDRESS));}
 					else if(j==3){request.setAddress(InetAddress.getByName(Datav2.SERVER4_ADDRESS));}
-					delayTemp=(float)0.0;
+					delayTemp=(double)0.0;
 					delayTemp=System.nanoTime();
 					skt.send(request);
 					//Functionsv2.delay();
@@ -115,7 +116,7 @@ public class Cv3 {
 		{
 			delaysFinal[i]=delays[delays.length-i-1];
 		}
-		float S2,S10,S20,S100,S1000,S3000;
+		double S2,S10,S20,S100,S1000,S3000;
 		S2=Functionsv2.getSk(delaysFinal, 2);
 		S10=Functionsv2.getSk(delaysFinal, 10);
 		S20=Functionsv2.getSk(delaysFinal, 20);
