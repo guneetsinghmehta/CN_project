@@ -81,6 +81,7 @@ public class Cv3 {
 			{
 				for(j=0;j<4;j++)
 				{
+					//print the value before using -- CAUTION !!
 					if(j==0){request.setAddress(InetAddress.getByName(Datav2.SERVER1_ADDRESS));}
 					else if(j==1){request.setAddress(InetAddress.getByName(Datav2.SERVER2_ADDRESS));}
 					else if(j==2){request.setAddress(InetAddress.getByName(Datav2.SERVER3_ADDRESS));}
@@ -90,15 +91,18 @@ public class Cv3 {
 					skt.send(request);
 					//Functionsv2.delay();
 					skt.receive(reply);
+					System.out.println(delayTemp);
 					delayTemp=System.nanoTime()-delayTemp;
+					System.out.println(delayTemp);
 					delayTemp=delayTemp/1000000;
+					System.out.println(delayTemp);
 					delayTemp=delayTemp+Datav2.DELAY_DURATION;
 					if(j==0){s1avg=delayTemp;}
 					if(j==1){s2avg=delayTemp;}
 					if(j==2){s3avg=delayTemp;}
 					if(j==3){s4avg=delayTemp;}
 					System.out.println(s1avg+" "+s2avg+" "+s3avg+" "+s4avg+" ");
-					System.out.println(delayTemp);
+					//System.out.println(delayTemp);
 					Thread.sleep(4000);
 				}
 				repeats=0;
