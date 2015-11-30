@@ -88,10 +88,11 @@ public class Cv3 {
 					delayTemp=(float)0.0;
 					delayTemp=System.nanoTime();
 					skt.send(request);
-					Functionsv2.delay();
+					//Functionsv2.delay();
 					skt.receive(reply);
 					delayTemp=System.nanoTime()-delayTemp;
 					delayTemp=delayTemp/1000000;
+					delayTemp=delayTemp+1000;
 					if(j==0){s1avg=delayTemp;}
 					if(j==1){s2avg=delayTemp;}
 					if(j==2){s3avg=delayTemp;}
