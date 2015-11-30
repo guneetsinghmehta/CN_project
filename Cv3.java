@@ -94,6 +94,9 @@ public class Cv3 {
 					if(j==1){s2avg=delayTemp;}
 					if(j==2){s3avg=delayTemp;}
 					if(j==3){s4avg=delayTemp;}
+					System.out.println(s1avg+" "+s2avg+" "+s3avg+" "+s4avg+" ");
+					System.out.println(delayTemp);
+					Thread.sleep(4000);
 				}
 				repeats=0;
 			}
