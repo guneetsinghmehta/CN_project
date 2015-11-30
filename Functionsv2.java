@@ -152,10 +152,10 @@ public class Functionsv2 {
 	public static String getAddressOfMinServer(float s1,float s2,float s3,float s4)
 	{
 		String ans = Datav2.SERVER1_ADDRESS;
-		if(s1<=s2&&s1<=s3&&s1<=s4){ans=Datav2.SERVER1_ADDRESS;}
-		if(s2<=s1&&s2<=s3&&s2<=s4){ans=Datav2.SERVER2_ADDRESS;}
-		if(s3<=s1&&s3<=s2&&s3<=s4){ans=Datav2.SERVER3_ADDRESS;}
-		if(s4<=s1&&s4<=s2&&s4<=s3){ans=Datav2.SERVER4_ADDRESS;}
+		if(s1<s2&&s1<s3&&s1<s4){ans=Datav2.SERVER1_ADDRESS;}
+		else if(s2<s1&&s2<s3&&s2<s4){ans=Datav2.SERVER2_ADDRESS;}
+		else if(s3<s1&&s3<s2&&s3<s4){ans=Datav2.SERVER3_ADDRESS;}
+		else if(s4<s1&&s4<s2&&s4<s3){ans=Datav2.SERVER4_ADDRESS;}
 		return ans;
 	}
 }
