@@ -80,6 +80,10 @@ public class Cv3 {
 			{
 				for(j=0;j<4;j++)
 				{
+					if(j==0){request.setAddress(InetAddress.getByName(Datav2.SERVER1_ADDRESS));}
+					else if(j==1){request.setAddress(InetAddress.getByName(Datav2.SERVER2_ADDRESS));}
+					else if(j==2){request.setAddress(InetAddress.getByName(Datav2.SERVER3_ADDRESS));}
+					else if(j==3){request.setAddress(InetAddress.getByName(Datav2.SERVER4_ADDRESS));}
 					delayTemp=System.nanoTime();
 					skt.send(request);
 					Functionsv2.delay();
