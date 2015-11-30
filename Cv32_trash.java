@@ -59,13 +59,17 @@ public class Cv32_trash {
 		s3avg=(double) 1.0002*Datav2.DELAY_DURATION;;
 		s4avg=(double) 1.0003*Datav2.DELAY_DURATION;;
 
+		int[] queryStatus=new int[4];
+		
 		int repeats=0;int j;
-		int repliesReceived=4;
+		int repliesReceived=0;
 		for (i=0;i<Datav2.NUM_UNIQUE_CHARACTERS;i=i+4)
 		{	
 			repliesReceived=0;
 			for(j=0;j<4;j++)
 			{
+				//setting lost query to [0,0,0,0]
+				queryStatus[j]=0;
 				requestString=Integer.toString(i+j+1);
 				if(j==0)
 				{
@@ -98,55 +102,43 @@ public class Cv32_trash {
 			System.out.println("receiving 4replies");
 			for(j=0;j<4;j++)
 			{
-				System.out.println("replies received="+repliesReceived);
-				if(j==0)
+				try
 				{
-					try
+					skt.receive(reply);
+					if(reply.getAddress()==InetAddress.getByName(Datav2.SERVER1_ADDRESS))
 					{
-						skt.receive(reply1);
-						repliesReceived++;
-						delayTemp1=System.nanoTime()-delayTemp1;
-						delayTemp1=delayTemp1/1000000;
-						delayTemp1=delayTemp1+Datav2.DELAY_DURATION;
+						delayTemp1=System.nanoTime()-delayTemp1;delayTemp1=delayTemp1/1000000;delayTemp1=delayTemp1+Datav2.DELAY_DURATION;
+						queryStatus[0]=1;
 					}
-					catch(Exception e){System.out.println("client timed out");}
+					else if(reply.getAddress()==InetAddress.getByName(Datav2.SERVER2_ADDRESS))
+					{
+						delayTemp2=System.nanoTime()-delayTemp2;delayTemp2=delayTemp2/1000000;delayTemp2=delayTemp2+Datav2.DELAY_DURATION;
+						queryStatus[1]=1;
+					}
+					else if(reply.getAddress()==InetAddress.getByName(Datav2.SERVER3_ADDRESS))
+					{
+						delayTemp3=System.nanoTime()-delayTemp3;delayTemp3=delayTemp3/1000000;delayTemp3=delayTemp3+Datav2.DELAY_DURATION;
+						queryStatus[2]=1;
+					}
+					else if(reply.getAddress()==InetAddress.getByName(Datav2.SERVER4_ADDRESS))
+					{
+						delayTemp4=System.nanoTime()-delayTemp4;delayTemp4=delayTemp4/1000000;delayTemp4=delayTemp4+Datav2.DELAY_DURATION;
+						queryStatus[3]=1;
+					}
 				}
-				else if(j==1)
+				catch(Exception e)
 				{
-					try
-					{
-						skt.receive(reply2);
-						repliesReceived++;
-						delayTemp2=System.nanoTime()-delayTemp2;
-						delayTemp2=delayTemp2/1000000;
-						delayTemp2=delayTemp2+Datav2.DELAY_DURATION;
-					}
-					catch(Exception e){System.out.println("client timed out");}
+					
 				}
-				else if(j==2)
-				{
-					try
-					{
-						skt.receive(reply3);
-						repliesReceived++;
-						delayTemp3=System.nanoTime()-delayTemp3;
-						delayTemp3=delayTemp3/1000000;
-						delayTemp3=delayTemp3+Datav2.DELAY_DURATION;
-					}
-					catch(Exception e){System.out.println("client timed out");}
-				}
-				else if(j==3)
-				{
-					try
-					{
-						skt.receive(reply4);
-						repliesReceived++;
-						delayTemp4=System.nanoTime()-delayTemp4;
-						delayTemp4=delayTemp4/1000000;
-						delayTemp4=delayTemp4+Datav2.DELAY_DURATION;
-					}
-					catch(Exception e){System.out.println("client timed out");}
-				}
+			}
+			for (j=0;j<4;j++){System.out.println(" "+queryStatus[j]);}
+			//add part that calculates the delays
+			//now writing the code that handles exception 
+			//Geni experiment - do not send packets from S4 and test
+			if(repliesReceived<4)
+			{
+				//determining which packets were lost
+				
 			}
 		}
 	}
