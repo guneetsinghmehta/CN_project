@@ -56,7 +56,6 @@ public class Cv2 {
 			//requestedServerAddress=Datav2.SERVER1_ADDRESS;
 			
 			
-			
 			Functionsv2.updatePacket(request, requestedServerAddress, Datav2.PORT_NUMBER_SERVER, requestString);
 			
 			delayTemp=System.nanoTime();

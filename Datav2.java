@@ -26,7 +26,7 @@ public class Datav2 {
 	 * SERVER3_ADDRESS
 	 * SERVER4_ADDRESS
 	 * CLIENT_ADDRESS -store inet address of server2
-	 * 
+	 * BETA - this is used for calculation of s1avg,s2,s3and s4avg
 	 */ 
 	public static final  int PORT_NUMBER_CLIENT=6790;
 	public static final  int PORT_NUMBER_SERVER=6789;
@@ -44,5 +44,6 @@ public class Datav2 {
 	public static final  String SERVER4_ADDRESS="10.10.2.2";
 	//public static final  String CLIENT_ADDRESS="localhost";
 	public static final  String CLIENT_ADDRESS="10.10.7.1";
+	public static final float BETA=(float)0.9;
 	
 }
