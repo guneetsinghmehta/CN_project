@@ -92,11 +92,11 @@ public class Cv3 {
 					skt.send(request);
 					//Functionsv2.delay();
 					skt.receive(reply);
-					System.out.println(delayTemp);
+					//System.out.println(delayTemp);
 					delayTemp=System.nanoTime()-delayTemp;
-					System.out.println(delayTemp);
+					//System.out.println(delayTemp);
 					delayTemp=delayTemp/1000000;
-					System.out.println(delayTemp);
+					//System.out.println(delayTemp);
 					delayTemp=delayTemp+Datav2.DELAY_DURATION;
 					if(j==0){s1avg=delayTemp;}
 					if(j==1){s2avg=delayTemp;}
@@ -104,7 +104,7 @@ public class Cv3 {
 					if(j==3){s4avg=delayTemp;}
 					System.out.println(s1avg+" "+s2avg+" "+s3avg+" "+s4avg+" ");
 					//System.out.println(delayTemp);
-					Thread.sleep(4000);
+					//Thread.sleep(4000);
 				}
 				repeats=0;
 			}
