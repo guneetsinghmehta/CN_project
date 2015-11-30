@@ -8,28 +8,20 @@ import java.lang.instrument.Instrumentation;
 public class trash1 {
 	public static void main(String args[]) throws IOException
 	{
-		DatagramPacket request=Functionsv2.createPacket();
-		String msg="000000";byte[] b=msg.getBytes();
-		
-		int i;String requestString,requestServer;i=0;
-		int y;
-		for(i=0;i<3000;i++)
+		int i;
+		float delayTemp;
+		for(i=0;i<100;i++)
 		{
-			msg=Integer.toString(i);
-			b=msg.getBytes();
-			request.setData(b);
-			
-			//Functionsv2.display(requestString);
-			Functionsv2.displayPacket(request);
-			requestServer=Functionsv2.getPacketString(request);
-			y=Integer.parseInt(requestServer);
-			System.out.println("i="+i+" y="+y+" requestString="+msg+" requestServer="+requestServer);
+			delayTemp=System.nanoTime();
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			delayTemp=System.nanoTime()-delayTemp;
+			delayTemp=delayTemp/1000000;
+			System.out.println(delayTemp);
 		}
 		
 		/*

@@ -38,14 +38,15 @@ public class Datav2 {
 	public static final int PAUSE_DURATION=200;
 	public static final int DELAY_DURATION=100;
 	public static final String FILENAME="text2.txt";
-	public static final  String SERVER1_ADDRESS="10.10.3.2";
-	//public static final  String SERVER1_ADDRESS="localhost";
+	//public static final  String SERVER1_ADDRESS="10.10.3.2";
+	public static final  String SERVER1_ADDRESS="localhost";
 	public static final  String SERVER2_ADDRESS="10.10.4.2";
 	public static final  String SERVER3_ADDRESS="10.10.1.2";
 	public static final  String SERVER4_ADDRESS="10.10.2.2";
-	//public static final  String CLIENT_ADDRESS="localhost";
-	public static final  String CLIENT_ADDRESS="10.10.7.1";
+	public static final  String CLIENT_ADDRESS="localhost";
+	//public static final  String CLIENT_ADDRESS="10.10.7.1";
 	public static final float BETA=(float)0.9;
 	public static final int MAX_REPEAT=50;
+	public static final int SOCKET_TIMEOUT=250;
 	
 }
