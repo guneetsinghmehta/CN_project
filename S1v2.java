@@ -35,6 +35,7 @@ public class S1v2 {
 		{
 			skt.receive(request);
 			requestString=Functionsv2.getPacketString(request);
+			System.out.println(requestString);
 			//System.out.println(requestString);
 			//requestString=requestString.substring(0, requestString.length());
 			query=Integer.parseInt(requestString);
