@@ -44,6 +44,6 @@ public class Datav2 {
 	public static final  String SERVER4_ADDRESS="10.10.2.2";
 	//public static final  String CLIENT_ADDRESS="localhost";
 	public static final  String CLIENT_ADDRESS="10.10.7.1";
-	public static final float BETA=(float)0.6;
+	public static final float BETA=(float)0.97;
 	
 }
