@@ -75,6 +75,7 @@ public class Cv3 {
 			else if(requestedServerAddress==Datav2.SERVER3_ADDRESS){s3avg=Datav2.BETA*s3avg+(1-Datav2.BETA)*delayTemp;System.out.println("3"+"\ts1avg = "+s1avg+"\ts2avg = "+s2avg+"\ts3avg = "+s3avg+"\ts4avg = "+s4avg);}
 			else if(requestedServerAddress==Datav2.SERVER4_ADDRESS){s4avg=Datav2.BETA*s4avg+(1-Datav2.BETA)*delayTemp;System.out.println("4"+"\ts1avg = "+s1avg+"\ts2avg = "+s2avg+"\ts3avg = "+s3avg+"\ts4avg = "+s4avg);}
 			if(requestedServerAddress==requestedServerAddressOld){repeats++;}
+			else{repeats=0;}
 			//removing deadlock
 			if(repeats==Datav2.MAX_REPEAT)
 			{
@@ -84,6 +85,7 @@ public class Cv3 {
 					else if(j==1){request.setAddress(InetAddress.getByName(Datav2.SERVER2_ADDRESS));}
 					else if(j==2){request.setAddress(InetAddress.getByName(Datav2.SERVER3_ADDRESS));}
 					else if(j==3){request.setAddress(InetAddress.getByName(Datav2.SERVER4_ADDRESS));}
+					delayTemp=(float)0.0;
 					delayTemp=System.nanoTime();
 					skt.send(request);
 					Functionsv2.delay();
