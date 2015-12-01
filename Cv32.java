@@ -255,11 +255,14 @@ public class Cv32 {
 					{
 						if(queryStatus[j]==1||queryStatusNew[j]==1){queryStatus[j]=1;repliesReceived++;}
 						if(queryStatus[j]*queryStatusNew[j]==0)
-						{delayTemp[j]=delayTemp[j]+delayTempNewCorrect[j];}
+						{delayTemp[j]=delayTemp[j]+delayTempNew[j];}
 						
 					}
 					System.out.println("qS");
 					for(j=0;j<4;j++){System.out.print(queryStatus[j]);}
+					System.out.println("");
+					System.out.println("delayTemp");
+					for(j=0;j<4;j++){System.out.print(delayTemp[j]);}
 					System.out.println("");
 					//System.out.println("qSN");
 					//for(j=0;j<4;j++){System.out.println(queryStatusNew[j]);}
