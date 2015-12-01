@@ -104,31 +104,33 @@ public class Cv32 {
 				try
 				{
 					skt.receive(reply);
-					System.out.println(reply.getAddress().toString());
+					String replyServerName=reply.getAddress().toString();
+					replyServerName=replyServerName.substring(1,replyServerName.length());
+					System.out.println(replyServerName);
 					System.out.println(Datav2.SERVER1_ADDRESS);
 					System.out.println(Datav2.SERVER2_ADDRESS);
 					System.out.println(Datav2.SERVER3_ADDRESS);
 					System.out.println(Datav2.SERVER4_ADDRESS);
 					Thread.sleep(1000);
-					if(reply.getAddress()==InetAddress.getByName(Datav2.SERVER1_ADDRESS))
+					if(replyServerName==(Datav2.SERVER1_ADDRESS))
 					{
 						delayTemp1=System.nanoTime()-delayTemp1;delayTemp1=delayTemp1/1000000;delayTemp1=delayTemp1+Datav2.DELAY_DURATION;
 						queryStatus[0]=1;
 						delayTemp[0]=delayTemp1;
 					}
-					else if(reply.getAddress()==InetAddress.getByName(Datav2.SERVER2_ADDRESS))
+					else if(replyServerName==(Datav2.SERVER2_ADDRESS))
 					{
 						delayTemp2=System.nanoTime()-delayTemp2;delayTemp2=delayTemp2/1000000;delayTemp2=delayTemp2+Datav2.DELAY_DURATION;
 						queryStatus[1]=1;
 						delayTemp[1]=delayTemp2;
 					}
-					else if(reply.getAddress()==InetAddress.getByName(Datav2.SERVER3_ADDRESS))
+					else if(replyServerName==(Datav2.SERVER3_ADDRESS))
 					{
 						delayTemp3=System.nanoTime()-delayTemp3;delayTemp3=delayTemp3/1000000;delayTemp3=delayTemp3+Datav2.DELAY_DURATION;
 						queryStatus[2]=1;
 						delayTemp[2]=delayTemp3;
 					}
-					else if(reply.getAddress()==InetAddress.getByName(Datav2.SERVER4_ADDRESS))
+					else if(replyServerName==(Datav2.SERVER4_ADDRESS))
 					{
 						delayTemp4=System.nanoTime()-delayTemp4;delayTemp4=delayTemp4/1000000;delayTemp4=delayTemp4+Datav2.DELAY_DURATION;
 						queryStatus[3]=1;
@@ -157,7 +159,7 @@ public class Cv32 {
 			
 			//add part that calculates the delays
 			//now writing the code that handles exception
-			while(repliesReceived>40)//Change Caution !!!!
+			while(repliesReceived>40)//Change Caution !!!! change to string server names
 			{
 				cycles++;
 				System.out.println("packet(s) lost");
