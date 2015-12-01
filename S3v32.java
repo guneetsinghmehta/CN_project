@@ -18,9 +18,9 @@ public class S3v32 {
 		DatagramPacket request=Functionsv2.createPacket();//client request
 		DatagramPacket reply=Functionsv2.createPacket();//reply to client request	
 		
-		Functionsv2.display("server listenting");
+		System.out.println("server listenting");
 		skt.receive(request);
-		Functionsv2.display("request received from client");
+		System.out.println("request received from client");
 		//sending the filesize
 		String filesizeString=""+Functionsv2.getFileSize();
 		InetAddress host = InetAddress.getByName(Datav2.CLIENT_ADDRESS);
