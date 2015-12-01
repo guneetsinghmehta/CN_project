@@ -148,7 +148,7 @@ public class Cv32 {
 			}
 			
 			int cycles=0;int[] queryStatusNew=new int[4];
-			int queryStatusNewCorrect[]=new int[4];
+			//int queryStatusNewCorrect[]=new int[4];
 			double delayTempNew[]=new double[4];
 			double delayTempNewCorrect[]=new double[4];
 			
@@ -247,13 +247,13 @@ public class Cv32 {
 							if(reply.getAddress()==InetAddress.getByName(s4TempAddress)){delayTempNew[3]=(double)Datav2.SOCKET_TIMEOUT;}
 						}
 					}
-					queryStatusNewCorrect=reorderArray(queryStatusNew,cycles);
+					//queryStatusNewCorrect=reorderArray(queryStatusNew,cycles);
 					//delayTempNewCorrect=reorderArray(delayTempNew,cycles);
 					repliesReceived=0;
 					System.out.println("in cycle="+cycles+" queryStatus=");
 					for(j=0;j<4;j++)
 					{
-						if(queryStatus[j]==1||queryStatusNewCorrect[j]==1){queryStatus[j]=1;repliesReceived++;}
+						if(queryStatus[j]==1||queryStatusNew[j]==1){queryStatus[j]=1;repliesReceived++;}
 						if(queryStatus[j]*queryStatusNew[j]==0)
 						{delayTemp[j]=delayTemp[j]+delayTempNewCorrect[j];}
 						
@@ -262,8 +262,6 @@ public class Cv32 {
 					for(j=0;j<4;j++){System.out.println(queryStatus[j]);}
 					System.out.println("qSN");
 					for(j=0;j<4;j++){System.out.println(queryStatusNew[j]);}
-					System.out.println("qSNC");
-					for(j=0;j<4;j++){System.out.println(queryStatusNewCorrect[j]);}
 					//end of repeat 
 			}
 			for(j=0;j<4;j++){delays[i+j]=delayTemp[j];}
