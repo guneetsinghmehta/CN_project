@@ -140,6 +140,7 @@ public class Cv32 {
 					if(reply.getAddress()==InetAddress.getByName(Datav2.SERVER4_ADDRESS)){delayTemp[3]=(double)Datav2.SOCKET_TIMEOUT;}
 				}
 			}
+			Thread.sleep(5000);
 			for (j=0;j<4;j++)
 			{
 				System.out.println(" "+queryStatus[j]);
