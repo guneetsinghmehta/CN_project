@@ -46,6 +46,7 @@ public class Cv32 {
 		double delayTemp1,delayTemp2,delayTemp3,delayTemp4;
 		delayTemp1=0;delayTemp2=0;delayTemp3=0;delayTemp4=0;
 		double delayTemp[]=new double[4];
+		double delayTempOld[]=new double[4];
 		double[] delaysFinal=new double[Datav2.NUM_UNIQUE_CHARACTERS];
 		
 		//initialising s1avg--2,3,4
@@ -63,6 +64,7 @@ public class Cv32 {
 		{	
 			s1TempAddress=Datav2.SERVER1_ADDRESS;s2TempAddress=Datav2.SERVER2_ADDRESS;s3TempAddress=Datav2.SERVER3_ADDRESS;s4TempAddress=Datav2.SERVER4_ADDRESS;
 			repliesReceived=0;
+			for(j=0;j<4;j++){delayTemp[j]=0;delayTempOld[j]=0;}
 			//sending requests
 			for(j=0;j<4;j++)
 			{
@@ -135,13 +137,16 @@ public class Cv32 {
 				catch(Exception e)
 				{
 					System.out.println("timeout");
-					if(reply.getAddress()==InetAddress.getByName(Datav2.SERVER1_ADDRESS)){delayTemp[0]=(double)Datav2.SOCKET_TIMEOUT;}
-					if(reply.getAddress()==InetAddress.getByName(Datav2.SERVER2_ADDRESS)){delayTemp[1]=(double)Datav2.SOCKET_TIMEOUT;}
-					if(reply.getAddress()==InetAddress.getByName(Datav2.SERVER3_ADDRESS)){delayTemp[2]=(double)Datav2.SOCKET_TIMEOUT;}
-					if(reply.getAddress()==InetAddress.getByName(Datav2.SERVER4_ADDRESS)){delayTemp[3]=(double)Datav2.SOCKET_TIMEOUT;}
 				}
 			}
-			Thread.sleep(5000);
+			for(j=0;j<4;j++)
+			{
+				if(delayTempOld[j]==delayTemp[j])
+				{
+					delayTemp[j]=delayTemp[j]+Datav2.SOCKET_TIMEOUT;
+				}
+			}
+			
 			for (j=0;j<4;j++)
 			{
 				System.out.print(" "+queryStatus[j]);
@@ -149,14 +154,14 @@ public class Cv32 {
 			}
 			System.out.println();
 			for(j=0;j<4;j++){System.out.print(" "+delayTemp[j]);}
-				
+			Thread.sleep(5000);	
 			
 			int cycles=0;int[] queryStatusNew=new int[4];
 			//int queryStatusNewCorrect[]=new int[4];
 			
 			//add part that calculates the delays
 			//now writing the code that handles exception
-			while(repliesReceived<4)//Change Caution !!!! change to string server names
+			while(repliesReceived>40)//Change Caution !!!! change to string server names
 			{
 				cycles++;
 				//System.out.println("packet(s) lost");
