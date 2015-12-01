@@ -93,7 +93,7 @@ public class Cv32 {
 					Functionsv2.updatePacket(request, requestedServerAddress, Datav2.PORT_NUMBER_SERVER, requestString);
 					delayTemp4=System.nanoTime();
 				}
-				
+				System.out.println();
 				System.out.println(requestString+" req sent");
 				skt.send(request);
 			}
@@ -154,7 +154,7 @@ public class Cv32 {
 			}
 			System.out.println();
 			for(j=0;j<4;j++){System.out.print(" "+delayTemp[j]);}
-			Thread.sleep(5000);	
+			//Thread.sleep(5000);	
 			
 			int cycles=0;int[] queryStatusNew=new int[4];
 			//int queryStatusNewCorrect[]=new int[4];
