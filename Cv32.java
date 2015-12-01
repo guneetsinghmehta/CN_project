@@ -91,7 +91,7 @@ public class Cv32 {
 					delayTemp4=System.nanoTime();
 				}
 				
-				System.out.println("req sent");
+				System.out.println(requestString+" req sent");
 				skt.send(request);
 			}
 			//setting lost query to [0,0,0,0]

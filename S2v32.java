@@ -38,11 +38,11 @@ public class S2v32 {
 			skt.receive(request);
 			
 			requestString=Functionsv2.getPacketString(request);
-			System.out.println(requestString+" Requested");
+			//System.out.println(requestString+" Requested");
 			//System.out.println(requestString);
 			//requestString=requestString.substring(0, requestString.length());
 			query=Integer.parseInt(requestString);
-			
+			System.out.println(query+" Requested");
 			replyString=Functionsv2.readPacketFromFile(textData, query+1);
 			Functionsv2.updatePacket(reply, Datav2.CLIENT_ADDRESS, Datav2.PORT_NUMBER_CLIENT,replyString );
 			skt.send(reply);
