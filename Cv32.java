@@ -106,16 +106,6 @@ public class Cv32 {
 					skt.receive(reply);
 					String replyServerName=reply.getAddress().toString();
 					replyServerName=replyServerName.substring(1,replyServerName.length());
-					System.out.println(replyServerName);
-					System.out.println(Datav2.SERVER1_ADDRESS.compareTo(replyServerName));
-					System.out.println(Datav2.SERVER2_ADDRESS.compareTo(replyServerName));
-					System.out.println(Datav2.SERVER3_ADDRESS.compareTo(replyServerName));
-					System.out.println(Datav2.SERVER4_ADDRESS.compareTo(replyServerName));
-					System.out.println(Datav2.SERVER1_ADDRESS.contains(replyServerName));
-					System.out.println(Datav2.SERVER2_ADDRESS.contains(replyServerName));
-					System.out.println(Datav2.SERVER3_ADDRESS.contains(replyServerName));
-					System.out.println(Datav2.SERVER4_ADDRESS.contains(replyServerName));
-					Thread.sleep(1000);
 					if(Datav2.SERVER1_ADDRESS.contains(replyServerName))
 					{
 						delayTemp1=System.nanoTime()-delayTemp1;delayTemp1=delayTemp1/1000000;delayTemp1=delayTemp1+Datav2.DELAY_DURATION;
