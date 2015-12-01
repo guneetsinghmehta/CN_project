@@ -168,6 +168,7 @@ public class Cv32 {
 				{
 					for(j=0;j<4;j++){delayTempOld[j]=delayTemp[j];delayTemp[j]=0;}
 				}
+				Thread.sleep(2000);
 				//System.out.println("packet(s) lost");
 				//determining which packets were lost
 					//setting inital values
@@ -254,12 +255,12 @@ public class Cv32 {
 						{
 							System.out.println("timeout");
 						}
-						for(j=0;j<4;j++)
-						{
-							if(delayTemp[j]==0){delayTemp[j]=Datav2.SOCKET_TIMEOUT;}
-						}
-						
 					}
+					for(j=0;j<4;j++)
+					{
+						if(delayTemp[j]==0){delayTemp[j]=Datav2.SOCKET_TIMEOUT;}
+					}
+					
 					//queryStatusNewCorrect=reorderArray(queryStatusNew,cycles);
 					//delayTempNewCorrect=reorderArray(delayTempNew,cycles);
 					repliesReceived=0;
