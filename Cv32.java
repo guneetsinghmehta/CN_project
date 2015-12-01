@@ -153,7 +153,7 @@ public class Cv32 {
 			
 			//add part that calculates the delays
 			//now writing the code that handles exception
-			while(repliesReceived>40)//Change Caution !!!! change to string server names
+			while(repliesReceived<4)//Change Caution !!!! change to string server names
 			{
 				cycles++;
 				System.out.println("packet(s) lost");
@@ -210,25 +210,27 @@ public class Cv32 {
 						try
 						{
 							skt.receive(reply);
-							if(reply.getAddress()==InetAddress.getByName(s1TempAddress))
+							String replyServerName=reply.getAddress().toString();
+							replyServerName=replyServerName.substring(1,replyServerName.length());
+							if(s1TempAddress.contains(replyServerName))
 							{
 								delayTemp1=System.nanoTime()-delayTemp1;delayTemp1=delayTemp1/1000000;delayTemp1=delayTemp1+Datav2.DELAY_DURATION;
 								queryStatusNew[0]=1;
 								delayTempNew[0]=delayTemp1;
 							}
-							else if(reply.getAddress()==InetAddress.getByName(s2TempAddress))
+							else if(s2TempAddress.contains(replyServerName))
 							{
 								delayTemp2=System.nanoTime()-delayTemp2;delayTemp2=delayTemp2/1000000;delayTemp2=delayTemp2+Datav2.DELAY_DURATION;
 								queryStatusNew[1]=1;
 								delayTempNew[1]=delayTemp2;
 							}
-							else if(reply.getAddress()==InetAddress.getByName(s3TempAddress))
+							else if(s3TempAddress.contains(replyServerName))
 							{
 								delayTemp3=System.nanoTime()-delayTemp3;delayTemp3=delayTemp3/1000000;delayTemp3=delayTemp3+Datav2.DELAY_DURATION;
 								queryStatusNew[2]=1;
 								delayTempNew[2]=delayTemp3;
 							}
-							else if(reply.getAddress()==InetAddress.getByName(s4TempAddress))
+							else if(s4TempAddress.contains(replyServerName))
 							{
 								delayTemp4=System.nanoTime()-delayTemp4;delayTemp4=delayTemp4/1000000;delayTemp4=delayTemp4+Datav2.DELAY_DURATION;
 								queryStatusNew[3]=1;
@@ -247,11 +249,13 @@ public class Cv32 {
 					queryStatusNewCorrect=reorderArray(queryStatusNew,cycles);
 					delayTempNewCorrect=reorderArray(delayTempNew,cycles);
 					repliesReceived=0;
+					System.out.println("in cycle="+cycles+" queryStatus=");
 					for(j=0;j<4;j++)
 					{
 						if(queryStatus[j]==1||queryStatusNewCorrect[j]==1){queryStatus[j]=1;repliesReceived++;}
 						if(queryStatus[j]*queryStatusNew[j]==0)
 						{delayTemp[j]=delayTemp[j]+delayTempNewCorrect[j];}
+						System.out.println(queryStatus[j]);
 					}
 					//end of repeat 
 			}
