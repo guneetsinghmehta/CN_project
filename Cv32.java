@@ -151,7 +151,7 @@ public class Cv32 {
 			
 			//add part that calculates the delays
 			//now writing the code that handles exception
-			while(repliesReceived<4)
+			while(repliesReceived>40)//Change Caution !!!!
 			{
 				cycles++;
 				System.out.println("packet(s) lost");
