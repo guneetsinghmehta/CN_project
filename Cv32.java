@@ -256,8 +256,12 @@ public class Cv32 {
 						if(queryStatus[j]==1||queryStatusNewCorrect[j]==1){queryStatus[j]=1;repliesReceived++;}
 						if(queryStatus[j]*queryStatusNew[j]==0)
 						{delayTemp[j]=delayTemp[j]+delayTempNewCorrect[j];}
-						System.out.println(queryStatus[j]);
+						
 					}
+					System.out.println("qS");
+					for(j=0;j<4;j++){System.out.println(queryStatus[j]);}
+					System.out.println("qSNC");
+					for(j=0;j<4;j++){System.out.println(queryStatusNewCorrect[j]);}
 					//end of repeat 
 			}
 			for(j=0;j<4;j++){delays[i+j]=delayTemp[j];}
