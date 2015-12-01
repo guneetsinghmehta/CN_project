@@ -104,6 +104,12 @@ public class Cv32 {
 				try
 				{
 					skt.receive(reply);
+					System.out.println(reply.getAddress().toString());
+					System.out.println(Datav2.SERVER1_ADDRESS);
+					System.out.println(Datav2.SERVER2_ADDRESS);
+					System.out.println(Datav2.SERVER3_ADDRESS);
+					System.out.println(Datav2.SERVER4_ADDRESS);
+					Thread.sleep(1000);
 					if(reply.getAddress()==InetAddress.getByName(Datav2.SERVER1_ADDRESS))
 					{
 						delayTemp1=System.nanoTime()-delayTemp1;delayTemp1=delayTemp1/1000000;delayTemp1=delayTemp1+Datav2.DELAY_DURATION;
