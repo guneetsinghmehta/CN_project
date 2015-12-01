@@ -45,6 +45,7 @@ public class Cv32 {
 		double[] delays=new double[Datav2.NUM_UNIQUE_CHARACTERS];
 		double delayTemp1,delayTemp2,delayTemp3,delayTemp4;
 		delayTemp1=0;delayTemp2=0;delayTemp3=0;delayTemp4=0;
+		double delayTemp[]=new double[4];
 		double[] delaysFinal=new double[Datav2.NUM_UNIQUE_CHARACTERS];
 		
 		//initialising s1avg--2,3,4
@@ -55,7 +56,7 @@ public class Cv32 {
 
 		int[] queryStatus=new int[4];int j;int repliesReceived=0;
 		String s1TempAddress,s2TempAddress,s3TempAddress,s4TempAddress,sTempAddress;
-		double delayTemp[]=new double[4];
+		
 		
 		//asking for packets
 		for (i=0;i<Datav2.NUM_UNIQUE_CHARACTERS;i=i+4)
@@ -143,14 +144,15 @@ public class Cv32 {
 			Thread.sleep(5000);
 			for (j=0;j<4;j++)
 			{
-				System.out.println(" "+queryStatus[j]);
+				System.out.print(" "+queryStatus[j]);
 				if(queryStatus[j]==1){repliesReceived++;}
 			}
+			System.out.println();
+			for(j=0;j<4;j++){System.out.print(" "+delayTemp[j]);}
+				
 			
 			int cycles=0;int[] queryStatusNew=new int[4];
 			//int queryStatusNewCorrect[]=new int[4];
-			double delayTempNew[]=new double[4];
-			double delayTempNewCorrect[]=new double[4];
 			
 			//add part that calculates the delays
 			//now writing the code that handles exception
@@ -217,34 +219,36 @@ public class Cv32 {
 							{
 								delayTemp1=System.nanoTime()-delayTemp1;delayTemp1=delayTemp1/1000000;delayTemp1=delayTemp1+Datav2.DELAY_DURATION;
 								queryStatusNew[0]=1;
-								delayTempNew[0]=delayTemp1;
+								//delayTempNew[0]=delayTemp1;
 							}
 							else if(s2TempAddress.contains(replyServerName))
 							{
 								delayTemp2=System.nanoTime()-delayTemp2;delayTemp2=delayTemp2/1000000;delayTemp2=delayTemp2+Datav2.DELAY_DURATION;
 								queryStatusNew[1]=1;
-								delayTempNew[1]=delayTemp2;
+								//delayTempNew[1]=delayTemp2;
 							}
 							else if(s3TempAddress.contains(replyServerName))
 							{
 								delayTemp3=System.nanoTime()-delayTemp3;delayTemp3=delayTemp3/1000000;delayTemp3=delayTemp3+Datav2.DELAY_DURATION;
 								queryStatusNew[2]=1;
-								delayTempNew[2]=delayTemp3;
+								//delayTempNew[2]=delayTemp3;
 							}
 							else if(s4TempAddress.contains(replyServerName))
 							{
 								delayTemp4=System.nanoTime()-delayTemp4;delayTemp4=delayTemp4/1000000;delayTemp4=delayTemp4+Datav2.DELAY_DURATION;
 								queryStatusNew[3]=1;
-								delayTempNew[3]=delayTemp4;
+								//delayTempNew[3]=delayTemp4;
 							}
 						}
 						catch(Exception e)
 						{
 							System.out.println("timeout");
+							/*
 							if(reply.getAddress()==InetAddress.getByName(s1TempAddress)){delayTempNew[0]=(double)Datav2.SOCKET_TIMEOUT;}
 							if(reply.getAddress()==InetAddress.getByName(s2TempAddress)){delayTempNew[1]=(double)Datav2.SOCKET_TIMEOUT;}
 							if(reply.getAddress()==InetAddress.getByName(s3TempAddress)){delayTempNew[2]=(double)Datav2.SOCKET_TIMEOUT;}
 							if(reply.getAddress()==InetAddress.getByName(s4TempAddress)){delayTempNew[3]=(double)Datav2.SOCKET_TIMEOUT;}
+							*/
 						}
 					}
 					//queryStatusNewCorrect=reorderArray(queryStatusNew,cycles);
@@ -254,8 +258,8 @@ public class Cv32 {
 					for(j=0;j<4;j++)
 					{
 						if(queryStatus[j]==1||queryStatusNew[j]==1){queryStatus[j]=1;repliesReceived++;}
-						if(queryStatus[j]*queryStatusNew[j]==0)
-						{delayTemp[j]=delayTemp[j]+delayTempNew[j];}
+						if(queryStatus[j]*queryStatusNew[j]==0){}
+						//{delayTemp[j]=delayTemp[j]+delayTempNew[j];}
 						
 					}
 					System.out.println("qS");
