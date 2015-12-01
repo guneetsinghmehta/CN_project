@@ -161,9 +161,13 @@ public class Cv32 {
 			
 			//add part that calculates the delays
 			//now writing the code that handles exception
-			while(repliesReceived>40)//Change Caution !!!! change to string server names
+			while(repliesReceived<4)//Change Caution !!!! change to string server names
 			{
 				cycles++;
+				if(cycles==1)
+				{
+					for(j=0;j<4;j++){delayTempOld[j]=delayTemp[j];delayTemp[j]=0;}
+				}
 				//System.out.println("packet(s) lost");
 				//determining which packets were lost
 					//setting inital values
@@ -213,6 +217,7 @@ public class Cv32 {
 					for(j=0;j<4;j++){queryStatusNew[j]=0;}
 					//receiving replies
 					System.out.println("receiving 4 repeat replies");
+					
 					for(j=0;j<4;j++)
 					{
 						try
@@ -224,37 +229,36 @@ public class Cv32 {
 							{
 								delayTemp1=System.nanoTime()-delayTemp1;delayTemp1=delayTemp1/1000000;delayTemp1=delayTemp1+Datav2.DELAY_DURATION;
 								queryStatusNew[0]=1;
-								//delayTempNew[0]=delayTemp1;
+								delayTemp[0]=delayTemp1;
 							}
 							else if(s2TempAddress.contains(replyServerName))
 							{
 								delayTemp2=System.nanoTime()-delayTemp2;delayTemp2=delayTemp2/1000000;delayTemp2=delayTemp2+Datav2.DELAY_DURATION;
 								queryStatusNew[1]=1;
-								//delayTempNew[1]=delayTemp2;
+								delayTemp[1]=delayTemp2;
 							}
 							else if(s3TempAddress.contains(replyServerName))
 							{
 								delayTemp3=System.nanoTime()-delayTemp3;delayTemp3=delayTemp3/1000000;delayTemp3=delayTemp3+Datav2.DELAY_DURATION;
 								queryStatusNew[2]=1;
-								//delayTempNew[2]=delayTemp3;
+								delayTemp[2]=delayTemp3;
 							}
 							else if(s4TempAddress.contains(replyServerName))
 							{
 								delayTemp4=System.nanoTime()-delayTemp4;delayTemp4=delayTemp4/1000000;delayTemp4=delayTemp4+Datav2.DELAY_DURATION;
 								queryStatusNew[3]=1;
-								//delayTempNew[3]=delayTemp4;
+								delayTemp[3]=delayTemp4;
 							}
 						}
 						catch(Exception e)
 						{
 							System.out.println("timeout");
-							/*
-							if(reply.getAddress()==InetAddress.getByName(s1TempAddress)){delayTempNew[0]=(double)Datav2.SOCKET_TIMEOUT;}
-							if(reply.getAddress()==InetAddress.getByName(s2TempAddress)){delayTempNew[1]=(double)Datav2.SOCKET_TIMEOUT;}
-							if(reply.getAddress()==InetAddress.getByName(s3TempAddress)){delayTempNew[2]=(double)Datav2.SOCKET_TIMEOUT;}
-							if(reply.getAddress()==InetAddress.getByName(s4TempAddress)){delayTempNew[3]=(double)Datav2.SOCKET_TIMEOUT;}
-							*/
 						}
+						for(j=0;j<4;j++)
+						{
+							if(delayTemp[j]==0){delayTemp[j]=Datav2.SOCKET_TIMEOUT;}
+						}
+						
 					}
 					//queryStatusNewCorrect=reorderArray(queryStatusNew,cycles);
 					//delayTempNewCorrect=reorderArray(delayTempNew,cycles);
@@ -262,6 +266,10 @@ public class Cv32 {
 					System.out.println("in cycle="+cycles+" queryStatus=");
 					for(j=0;j<4;j++)
 					{
+						if(queryStatus[j]==0&&queryStatusNew[j]==0){delayTempOld[j]=delayTempOld[j]+Datav2.SOCKET_TIMEOUT;}
+						if(queryStatus[j]==0&&queryStatusNew[j]==1){delayTempOld[j]=delayTempOld[j]+delayTemp[j];}
+						if(queryStatus[j]==1){delayTempOld[j]=delayTempOld[j];}
+						
 						if(queryStatus[j]==1||queryStatusNew[j]==1){queryStatus[j]=1;repliesReceived++;}
 						if(queryStatus[j]*queryStatusNew[j]==0){}
 						//{delayTemp[j]=delayTemp[j]+delayTempNew[j];}
@@ -270,14 +278,14 @@ public class Cv32 {
 					System.out.println("qS");
 					for(j=0;j<4;j++){System.out.print(queryStatus[j]+" ");}
 					System.out.println("");
-					System.out.println("delayTemp");
-					for(j=0;j<4;j++){System.out.print(delayTemp[j]+" ");}
+					System.out.println("delayTempOld");
+					for(j=0;j<4;j++){System.out.print(delayTempOld[j]+" ");}
 					System.out.println("");
 					//System.out.println("qSN");
 					//for(j=0;j<4;j++){System.out.println(queryStatusNew[j]);}
 					//end of repeat 
 			}
-			for(j=0;j<4;j++){delays[i+j]=delayTemp[j];}
+			for(j=0;j<4;j++){delays[i+j]=delayTempOld[j];}
 		}
 		Arrays.sort(delays);
 		for (i=0;i<Datav2.NUM_UNIQUE_CHARACTERS;i++)
