@@ -287,12 +287,15 @@ public class Cv32 {
 	{
 		int answer[]=new int[4];
 		int i,j,temp;
+		System.out.println("in reorder cycles="+cycles);
 		for (i=0;i<cycles%4;i++)
 		{
 			temp=array[0];
 			for(j=0;j<3;j++)
 			{array[j]=array[j+1];}
 			array[3]=temp;
+			for(j=0;j<4;j++){System.out.println(array[j]);}
+			System.out.println();
 		}
 		return array;
 	}
