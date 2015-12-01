@@ -278,6 +278,9 @@ public class Cv32 {
 					System.out.println("qS");
 					for(j=0;j<4;j++){System.out.print(queryStatus[j]+" ");}
 					System.out.println("");
+					System.out.println("qSN");
+					for(j=0;j<4;j++){System.out.print(queryStatusNew[j]+" ");}
+					System.out.println("");
 					System.out.println("delayTempOld");
 					for(j=0;j<4;j++){System.out.print(delayTempOld[j]+" ");}
 					System.out.println("");
