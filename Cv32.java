@@ -157,7 +157,7 @@ public class Cv32 {
 			while(repliesReceived<4)//Change Caution !!!! change to string server names
 			{
 				cycles++;
-				System.out.println("packet(s) lost");
+				//System.out.println("packet(s) lost");
 				//determining which packets were lost
 					//setting inital values
 					for(j=0;j<4;j++){queryStatusNew[j]=0;}
@@ -198,7 +198,7 @@ public class Cv32 {
 							Functionsv2.updatePacket(request, requestedServerAddress, Datav2.PORT_NUMBER_SERVER, requestString);
 							delayTemp4=System.nanoTime();
 						}
-						System.out.println("repeat req sent");
+						//System.out.println("repeat req sent");
 						skt.send(request);
 					}
 					
@@ -259,9 +259,10 @@ public class Cv32 {
 						
 					}
 					System.out.println("qS");
-					for(j=0;j<4;j++){System.out.println(queryStatus[j]);}
-					System.out.println("qSN");
-					for(j=0;j<4;j++){System.out.println(queryStatusNew[j]);}
+					for(j=0;j<4;j++){System.out.print(queryStatus[j]);}
+					System.out.println("");
+					//System.out.println("qSN");
+					//for(j=0;j<4;j++){System.out.println(queryStatusNew[j]);}
 					//end of repeat 
 			}
 			for(j=0;j<4;j++){delays[i+j]=delayTemp[j];}
