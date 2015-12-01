@@ -248,7 +248,7 @@ public class Cv32 {
 						}
 					}
 					queryStatusNewCorrect=reorderArray(queryStatusNew,cycles);
-					delayTempNewCorrect=reorderArray(delayTempNew,cycles);
+					//delayTempNewCorrect=reorderArray(delayTempNew,cycles);
 					repliesReceived=0;
 					System.out.println("in cycle="+cycles+" queryStatus=");
 					for(j=0;j<4;j++)
@@ -288,16 +288,17 @@ public class Cv32 {
 		int answer[]=new int[4];
 		int i,j,temp;
 		System.out.println("in reorder cycles="+cycles);
+		for(j=0;j<4;j++){answer[j]=array[j];}
 		for (i=0;i<cycles%4;i++)
 		{
-			temp=array[0];
+			temp=answer[0];
 			for(j=0;j<3;j++)
-			{array[j]=array[j+1];}
-			array[3]=temp;
-			for(j=0;j<4;j++){System.out.println(array[j]);}
+			{answer[j]=answer[j+1];}
+			answer[3]=temp;
+			for(j=0;j<4;j++){System.out.println(answer[j]);}
 			System.out.println();
 		}
-		return array;
+		return answer;
 	}
 	
 	public static double[] reorderArray(double array[],int cycles)
