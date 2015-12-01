@@ -107,10 +107,14 @@ public class Cv32 {
 					String replyServerName=reply.getAddress().toString();
 					replyServerName=replyServerName.substring(1,replyServerName.length());
 					System.out.println(replyServerName);
-					System.out.println(Datav2.SERVER1_ADDRESS);
-					System.out.println(Datav2.SERVER2_ADDRESS);
-					System.out.println(Datav2.SERVER3_ADDRESS);
-					System.out.println(Datav2.SERVER4_ADDRESS);
+					System.out.println(Datav2.SERVER1_ADDRESS.compareTo(replyServerName));
+					System.out.println(Datav2.SERVER2_ADDRESS.compareTo(replyServerName));
+					System.out.println(Datav2.SERVER3_ADDRESS.compareTo(replyServerName));
+					System.out.println(Datav2.SERVER4_ADDRESS.compareTo(replyServerName));
+					System.out.println(Datav2.SERVER1_ADDRESS.contains(replyServerName));
+					System.out.println(Datav2.SERVER2_ADDRESS.contains(replyServerName));
+					System.out.println(Datav2.SERVER3_ADDRESS.contains(replyServerName));
+					System.out.println(Datav2.SERVER4_ADDRESS.contains(replyServerName));
 					Thread.sleep(1000);
 					if(replyServerName==(Datav2.SERVER1_ADDRESS))
 					{
