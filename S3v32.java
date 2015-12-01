@@ -46,7 +46,7 @@ public class S3v32 {
 			replyString=Functionsv2.readPacketFromFile(textData, query+1);
 			Functionsv2.updatePacket(reply, Datav2.CLIENT_ADDRESS, Datav2.PORT_NUMBER_CLIENT,replyString );
 			//skt.send(reply);
-			System.out.println(requestString+" Sent");
+			//System.out.println(requestString+" Sent");
 		}
 	}
 }
