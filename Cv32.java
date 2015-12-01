@@ -168,7 +168,7 @@ public class Cv32 {
 				{
 					for(j=0;j<4;j++){delayTempOld[j]=delayTemp[j];delayTemp[j]=0;}
 				}
-				Thread.sleep(2000);
+				//Thread.sleep(2000);
 				//System.out.println("packet(s) lost");
 				//determining which packets were lost
 					//setting inital values
