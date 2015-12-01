@@ -260,6 +260,8 @@ public class Cv32 {
 					}
 					System.out.println("qS");
 					for(j=0;j<4;j++){System.out.println(queryStatus[j]);}
+					System.out.println("qSN");
+					for(j=0;j<4;j++){System.out.println(queryStatusNew[j]);}
 					System.out.println("qSNC");
 					for(j=0;j<4;j++){System.out.println(queryStatusNewCorrect[j]);}
 					//end of repeat 
