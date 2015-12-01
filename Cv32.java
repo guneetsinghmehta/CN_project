@@ -111,25 +111,25 @@ public class Cv32 {
 					replyServerName=replyServerName.substring(1,replyServerName.length());
 					if(Datav2.SERVER1_ADDRESS.contains(replyServerName))
 					{
-						delayTemp1=System.nanoTime()-delayTemp1;delayTemp1=delayTemp1/1000000;delayTemp1=delayTemp1+Datav2.DELAY_DURATION;
+						delayTemp1=System.nanoTime()-delayTemp1;delayTemp1=delayTemp1/1000000;delayTemp1=delayTemp1;//+Datav2.DELAY_DURATION;
 						queryStatus[0]=1;
 						delayTemp[0]=delayTemp1;
 					}
 					else if(Datav2.SERVER2_ADDRESS.contains(replyServerName))
 					{
-						delayTemp2=System.nanoTime()-delayTemp2;delayTemp2=delayTemp2/1000000;delayTemp2=delayTemp2+Datav2.DELAY_DURATION;
+						delayTemp2=System.nanoTime()-delayTemp2;delayTemp2=delayTemp2/1000000;delayTemp2=delayTemp2;//+Datav2.DELAY_DURATION;
 						queryStatus[1]=1;
 						delayTemp[1]=delayTemp2;
 					}
 					else if(Datav2.SERVER3_ADDRESS.contains(replyServerName))
 					{
-						delayTemp3=System.nanoTime()-delayTemp3;delayTemp3=delayTemp3/1000000;delayTemp3=delayTemp3+Datav2.DELAY_DURATION;
+						delayTemp3=System.nanoTime()-delayTemp3;delayTemp3=delayTemp3/1000000;delayTemp3=delayTemp3;//+Datav2.DELAY_DURATION;
 						queryStatus[2]=1;
 						delayTemp[2]=delayTemp3;
 					}
 					else if(Datav2.SERVER4_ADDRESS.contains(replyServerName))
 					{
-						delayTemp4=System.nanoTime()-delayTemp4;delayTemp4=delayTemp4/1000000;delayTemp4=delayTemp4+Datav2.DELAY_DURATION;
+						delayTemp4=System.nanoTime()-delayTemp4;delayTemp4=delayTemp4/1000000;delayTemp4=delayTemp4;//+Datav2.DELAY_DURATION;
 						queryStatus[3]=1;
 						delayTemp[3]=delayTemp4;
 					}
@@ -228,25 +228,25 @@ public class Cv32 {
 							replyServerName=replyServerName.substring(1,replyServerName.length());
 							if(s1TempAddress.contains(replyServerName))
 							{
-								delayTemp1=System.nanoTime()-delayTemp1;delayTemp1=delayTemp1/1000000;delayTemp1=delayTemp1+Datav2.DELAY_DURATION;
+								delayTemp1=System.nanoTime()-delayTemp1;delayTemp1=delayTemp1/1000000;delayTemp1=delayTemp1;//+Datav2.DELAY_DURATION;
 								queryStatusNew[0]=1;
 								delayTemp[0]=delayTemp1;
 							}
 							else if(s2TempAddress.contains(replyServerName))
 							{
-								delayTemp2=System.nanoTime()-delayTemp2;delayTemp2=delayTemp2/1000000;delayTemp2=delayTemp2+Datav2.DELAY_DURATION;
+								delayTemp2=System.nanoTime()-delayTemp2;delayTemp2=delayTemp2/1000000;delayTemp2=delayTemp2;//+Datav2.DELAY_DURATION;
 								queryStatusNew[1]=1;
 								delayTemp[1]=delayTemp2;
 							}
 							else if(s3TempAddress.contains(replyServerName))
 							{
-								delayTemp3=System.nanoTime()-delayTemp3;delayTemp3=delayTemp3/1000000;delayTemp3=delayTemp3+Datav2.DELAY_DURATION;
+								delayTemp3=System.nanoTime()-delayTemp3;delayTemp3=delayTemp3/1000000;delayTemp3=delayTemp3;//+Datav2.DELAY_DURATION;
 								queryStatusNew[2]=1;
 								delayTemp[2]=delayTemp3;
 							}
 							else if(s4TempAddress.contains(replyServerName))
 							{
-								delayTemp4=System.nanoTime()-delayTemp4;delayTemp4=delayTemp4/1000000;delayTemp4=delayTemp4+Datav2.DELAY_DURATION;
+								delayTemp4=System.nanoTime()-delayTemp4;delayTemp4=delayTemp4/1000000;delayTemp4=delayTemp4;//+Datav2.DELAY_DURATION;
 								queryStatusNew[3]=1;
 								delayTemp[3]=delayTemp4;
 							}
